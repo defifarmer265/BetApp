@@ -1,0 +1,55 @@
+@import './utils/variables';
+@import './utils/mixins';
+.app{
+    // background-color: $bg-main;
+    background-color: #eaecef;
+    min-height: 100vh;
+}
+
+.main-content{
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 85vh;
+    margin-top: 20px;
+    background-color: #eaecef;
+    display: grid;
+    grid-template-columns: 2fr 5fr minmax(275px, 2fr);
+    @include respond-tablet {
+        grid-template-columns: 5fr minmax(250px, 2fr);
+    }
+    @include respond-before-phone {
+        grid-template-columns: 1fr;
+    }
+        &__center{
+            // flex-grow: 1;
+            width: 100%;
+        }
+    &__left{
+        flex-grow: 200px;
+        margin-right: 20px;
+        @include respond-tablet {
+            display: none;
+        }
+        @include respond-before-phone {
+            display: none;
+        }
+    }
+    &__right{
+        margin-left: 20px;
+        flex-grow: 280px;
+        // @include respond-tablet {
+        //     display: none;
+        // }
+        @include respond-before-phone {
+            display: none;
+        }
+    }
+}
+
+.betinfo{
+    background-color: #0ff;
+    width: 100%;
+}
+.main{
+    background-color: #ff0;
+}

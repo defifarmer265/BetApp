@@ -1,0 +1,58 @@
+.betAmount{
+    
+    &__details{
+        &-money, 
+        &-bonus,
+        &-winning{
+            display: flex;
+            align-items: center;
+
+        }
+        &-money{
+            .input{
+                width: 68px;
+                margin-left: auto;
+                border-radius: 2px;
+                font-size: 12px;
+                padding: 0 6px;
+                text-align: right;
+                border: 1px solid #B4B4B4;
+                
+            }
+        }
+        &-bonus{
+            h3{
+                margin-top: 0;
+                margin-bottom: 0;
+                display: inline;
+                margin-left: auto;
+            }
+        }
+        &-winning{
+            .money{
+                margin-left: auto;
+                h3{
+                    display: inline;
+                }
+            }
+        }
+    }
+    &__actions{
+        
+        &-suggest{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 100%;
+            &-button{
+                text-align: center;
+            }
+            
+        }
+        &-buttons{
+
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

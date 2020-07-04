@@ -1,0 +1,43 @@
+.mainview{
+    background-color: #ffffff;
+    width: 100%;
+    &__top{
+        color: #ddd;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        .refresh{
+            margin-left: auto;
+            svg{
+                margin-left: 5px;
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+    .uk-tab{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.uk-tab>.uk-active>a{
+    border-color: red;
+    border-width: 3px;
+    
+}
+
+&__options{
+    display: flex;
+    padding: 10px;
+    max-width: 400px;
+    overflow-x: auto;
+    &-box{
+        padding: 14px 0 21px 12px;
+        margin-right: 10px;
+        width: 130px;
+        height: 60px;
+        cursor: pointer;
+        border-radius: 2px;
+        background: #F7F7F7;
+    }
+}
+}

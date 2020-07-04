@@ -1,0 +1,65 @@
+@mixin clearfix {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  
+  // MEDIA QUERY MANAGER
+  /*
+  0 - 600px:      Phone
+  600 - 900px:    Tablet Portrait
+  900 - 1200px:   Tablet landscape
+  
+  [1200, 1800] is where our normal styles apply
+  1800px + :      Big Desktop
+  */
+  @mixin respond-not-web {
+    @media (min-width: 1640px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-web {
+    @media (max-width: 1640px) and (min-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-laptop-tablet {
+    @media (max-width: 1340px) and (min-width: 600px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-before-phone {
+    @media (max-width: 673px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-phone {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-tablet {
+    @media (max-width: 1024px) and (min-width: 600px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-tablet-phone {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin respond-not-tablet {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  

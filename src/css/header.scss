@@ -1,0 +1,35 @@
+@import './utils/variables';
+.header{
+    max-width: 100%;
+    min-height: 60px;
+    background-color: $color-primary;
+    padding: 0 80px;
+    &__body{
+        height: 60px;
+        width: 100%;
+        // background-color: #f00;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo{
+        font-weight: 600;
+        font-family: 'mukta';
+    }
+
+    &__main{
+        flex-grow: 1;
+
+            &-signin{
+                // margin-left: auto;
+                width: 560px;
+                margin-left: auto;
+                form{
+                margin-left: auto;   
+                width: 400px;
+                  display: flex;  
+                }                
+            }
+    }
+}

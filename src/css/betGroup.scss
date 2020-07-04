@@ -1,0 +1,62 @@
+@import './utils/mixins';
+@import './utils/variables';
+.betGroup{
+
+    table{
+        width: 100%;
+        padding: 10px;
+        tr{
+            border: 1px solid #999;
+            // border-bottom: 2px solid red !important;
+            &.yikes{
+                border-bottom: 2px solid red !important;
+            }
+        }
+        .match_date{
+            color: $font-color;
+            font-weight: 00;
+            font-size: 22px;
+        }
+        th{
+            
+            color: #b6b5b3;
+            font-weight: 100;
+            font-size: 13.5px;
+            &.hah{
+                border-bottom: 2px solid red;
+            }
+        }
+        td{
+            color: #000;
+
+            .teamShow{
+                display: none;
+                @include respond-tablet-phone {
+                    display: block;
+                    margin-right: 20px;
+                    font-weight: 100;
+                }
+            }
+            button{
+                width: 100%;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+
+                &.matchSelected{
+                    background-color: #00f;
+                }
+            }
+        }
+        .teams{
+            @include respond-tablet-phone {
+                display: none;
+            }
+        }
+        .teamView{
+            @include respond-tablet-phone {
+                display: none;
+            }
+        }
+    }
+}
