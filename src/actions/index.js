@@ -1,6 +1,6 @@
 // import oddsApi from '../apis/the-odds-api'
 import axios from 'axios'
-const KEY ='763eeecb845ff81a3c5cd63452bd47f9'
+const KEY ='938761136cd182581930d58d844d7867'
 const resolveAwayTeam=(match)=>{
     if(match.teams[0] !== match.home_team){
         return match.teams[0]             
@@ -61,6 +61,8 @@ export const fetchLeagueMatches = (league)=> async (dispatch, getState)=>{
 }
 
 export const selectMatch = (betDetails)=>{
+    console.log(betDetails);
+    
     return{
         type: "SELECT_MATCH",
         payload: betDetails
@@ -75,3 +77,12 @@ export const leagueMatchesFetch = (isFetched)=>{
         payload: isFetched
     }
 }
+
+// export const deactivateMatch = (match_id)=> async (dispatch, getState)=>{
+//     // console.log("Postsss", response.data)
+//     let leagues = response.data.data.filter(league=> league.group.includes('Soccer'))
+//     dispatch({
+//         type: "DEACTIVATE_MATCH",
+//         payload: match_id
+//     })
+// }

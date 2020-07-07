@@ -53,7 +53,9 @@ render(){
                     <th className="">Away</th> 
                     </tr>                    
                 </thead>
+                <tbody>
                     {this.renderMatches()}
+                </tbody>
             </table>
             
         </div>

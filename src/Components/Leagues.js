@@ -10,16 +10,19 @@ class Leagues extends React.Component{
     // const renderLeagues = return leagues.map(league=> <li>
     //         league
     //     </li>)
+    lops(id){
+        document.getElementById(`${id}`).classList.toggle("selected")
+    }
     renderLeagues(){
         return this.props.leagues.map(league=> <li className="list-group-item">
                                                     <NavLink
+                                                    className="league-link"
                                                     activeStyle={{
-                                                        fontWeight: "bold",
-                                                        color: "red"
+                                                        fontWeight: "700",
                                                       }}
                                                      to={`/league/${league.key}`}>
                                                         {league.title}
-                                                    </NavLink>
+                                                    </NavLink> <Star id={league.key} onClick={()=>this.lops(league.key)} />
                                                 </li>)
         }
         componentDidMount(){

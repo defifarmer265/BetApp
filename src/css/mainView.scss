@@ -1,13 +1,36 @@
+@import './utils/variables';
 .mainview{
     background-color: #ffffff;
     width: 100%;
+    overflow-x: auto;
+    // padding: 1px;
     &__top{
         color: #ddd;
-        padding: 0 10px;
         display: flex;
         align-items: center;
+        .latest{
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            .circle{
+                display: block;
+                width: 24px;
+                height: 24px;
+                margin-right: 4px;
+                border-radius: 45px;
+                background-color: #0D9737;
+                // margin-top: 4px;
+            }
+            h2{
+                font-size: 21px;
+                font-weight: 600;
+                margin: 0
+            }
+        }
         .refresh{
             margin-left: auto;
+            color: $font-color;
+            font-size: 15px;
             svg{
                 margin-left: 5px;
                 width: 15px;
@@ -31,7 +54,7 @@
     max-width: 400px;
     overflow-x: auto;
     &-box{
-        padding: 14px 0 21px 12px;
+        // padding: 14px 0 21px 12px;
         margin-right: 10px;
         width: 130px;
         height: 60px;

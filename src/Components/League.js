@@ -34,7 +34,10 @@ class MainView extends React.Component{
         return(
             <div className="mainview">
             <div className="mainview__top">
-                <h2>Upcoming Matches</h2>
+            <div className="latest">
+                    <span className="circle"></span>
+                    <h2>Upcoming Matches</h2>
+                </div>
                 <div className="refresh">
                     <span>Refresh</span>
                     <Refresh />

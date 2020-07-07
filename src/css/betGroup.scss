@@ -4,18 +4,18 @@
 
     table{
         width: 100%;
-        padding: 10px;
+        font-size: 15px;
         tr{
             border: 1px solid #999;
-            // border-bottom: 2px solid red !important;
-            &.yikes{
-                border-bottom: 2px solid red !important;
-            }
+            position: relative;
+                border-bottom: 2px solid red;
+
+            
         }
         .match_date{
             color: $font-color;
-            font-weight: 00;
-            font-size: 22px;
+            font-weight: 400;
+            font-size: 21px;
         }
         th{
             
@@ -32,9 +32,25 @@
             .teamShow{
                 display: none;
                 @include respond-tablet-phone {
-                    display: block;
+                    display: grid !important;
+                    grid-template-columns: 20px 1fr;
+                    align-items: center;
                     margin-right: 20px;
                     font-weight: 100;
+                }
+                @include respond-phone{
+                    font-size: 13px;
+                }
+                
+                &__teams{
+                    margin-left: 5px;
+                }
+                &__stats{
+                    // margin-right: 15px;
+                    svg{
+                        width: 100%;
+                        height: 12px;
+                    }
                 }
             }
             button{
@@ -44,7 +60,7 @@
                 justify-content: center;
 
                 &.matchSelected{
-                    background-color: #00f;
+                    background-color: $odd-color;
                 }
             }
         }
@@ -54,6 +70,23 @@
             }
         }
         .teamView{
+            font-weight: 100;
+            color: $font-color;
+            // font-size: 15px;
+            display: flex;
+            align-items: center;
+            &__teams{
+                
+            }
+            &__stats{
+                margin-left: auto;
+                margin-right: 17px;
+                svg{
+                    fill: $font-color;
+                    width: 18px;
+                    height: 18px;
+                }
+            }
             @include respond-tablet-phone {
                 display: none;
             }
