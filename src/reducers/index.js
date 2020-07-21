@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
 import {fetchMatches, selectMatch} from './matchesReducers'
 import {fetchLeagues, fetchLeagueMatches, leagueMatchesFetched} from './leaguesReducers'
+import {authUser, betAmount, placedBets} from './userReducers'
 
 export default combineReducers({
     //so posts is what will apper in components props
@@ -8,5 +9,8 @@ export default combineReducers({
     selectedMatches: selectMatch,
     leagues: fetchLeagues,
     selectedLeagueMatches: fetchLeagueMatches,
-    leagueMatchesFetched
+    leagueMatchesFetched,
+    authUser,
+    betAmount,
+    placedBets
 })

@@ -8,23 +8,28 @@ export const fetchMatches = (matches=[], action)=>{
 export const selectMatch = (selectedMatches=[], action)=>{
     if(action.type==='SELECT_MATCH'){
         const matchIncluded = selectedMatches.some(match=> match.match_id === action.payload.match_id)
-        if(!matchIncluded && action.payload.checked){
+        if(!matchIncluded){
             //this means the match is not there at all and you anna add it
             return [...selectedMatches, action.payload]
-        }
+        }    
         else if(matchIncluded){
-            //this means the match is included,
-            if(action.payload.hasOwnProperty('checked')){
-                //this means that you want to update the checked property because the checked property is present
-                console.log("Present and not checked lmaoo")
-                console.log(selectedMatches.find(match=>match.match_id === action.payload.match_id))
+            return selectedMatches.filter(match => match.match_id !== action.payload.match_id) 
+        }  
+    }
+    else if(action.type === 'CHECK_MATCH'){
                 selectedMatches.find(match=>match.match_id === action.payload.match_id).checked = action.payload.checked
                 return [...selectedMatches]
-            }
-            //no checked property, this means you wanna remove the match
-                return selectedMatches.filter(match => match.match_id !== action.payload.match_id)
-            
-        }
+    }
+    
+    else if(action.type === 'REMOVE_MATCH'){
+        return selectedMatches.filter(match => match.match_id !== action.payload.match_id)
+    }
+    else if(action.type==='REMOVE_MATCHES'){
+        return []
     }
     return selectedMatches
+}
+
+export const clearMatches =()=>{
+    
 }

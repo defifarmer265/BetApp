@@ -1,0 +1,129 @@
+@import './utils/mixins';
+@import './utils/variables';
+
+.sidebar-modal{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    z-index: 2222332 !important;
+    height: 100vh;
+    &.w-100{
+        width: 100%;
+    }
+    &.w-0{
+        width: 0;
+    }
+    display: flex;
+    .sidebar{
+        position: fixed;
+        z-index: 1111;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        height: 100vh;
+        width: 300px;
+        overflow-x: auto;
+        transition: transform .2s cubic-bezier(.4,0,.2,1),-webkit-transform .2s cubic-bezier(.4,0,.2,1),-o-transform .2s cubic-bezier(.4,0,.2,1);
+
+        &.sidebar__show{
+            transform: translate3d(0px,0,0)!important;
+        }
+        &.sidebar__no-show{
+            transform: translate3d(-300px,0,0)!important;
+        } 
+        
+        &__main{
+
+            &-top{
+                padding: 10px;                
+                background-color: $header-background;
+                &-action{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    &-home{
+                        font-size: $header-font-size;
+                        a{
+                            color: #fff;
+                            display: flex;
+                            align-items: center;
+                            svg{
+                                width:19px;
+                                height: 19px;
+                            }
+                            span{
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+
+                &-input{
+                    margin: 10px 0;
+                    width: 100%;
+                    position: relative;
+
+                    input{
+                        width: 100%;
+                        height: 35px;
+                        border-radius: 2px;
+                        background: $input-background;
+                        border: none;
+                        font-size: 11.8px;
+                        color: #fff !important;
+                        padding-left: 30px;
+                        &:focus{
+                            background: $input-background;
+                        }
+                        &::placeholder{
+                            font-size: 11.8px;
+                            color: #fff;
+                        }
+                    }
+                    svg{
+                        position: absolute;
+                        stroke: #fff;
+                        width: 18px !important;
+                        height: 13px;
+                        margin-left: 8px !important;
+                    }
+                }
+                &-buttons{
+                    display: flex;
+                    .button-link{
+                        color: #fff;
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: $header-font-size;
+                        &:not(:last-child){
+                            margin-right: 10px;
+                            cursor: pointer;
+                        }
+                        svg{
+                            width: 25px;
+                            display: inline-block;
+                        }
+                        span{
+                            line-height: 15px;
+                        }
+                    }
+                }
+                    
+                svg{
+                    width: auto;
+                    height: 30px;
+                    fill: #fff;
+                    margin-left: -7px;
+                }
+            }
+        }
+    }
+    
+  }

@@ -1,0 +1,80 @@
+@import './utils/variables';
+@import './utils/mixins';
+
+.mobilebets{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    // top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    background-color: $modal-bg;
+    display: none;
+    // z-index: 9999999999999 !important;
+    // height: 100vh;
+    @include respond-before-phone {
+        display: block;
+    }
+    &__content{
+        position: fixed;
+        top: 0;
+        background-color:$modal-bg;
+        width: 100%;
+        height: 100vh;
+        z-index: 222;
+        // height: 90vh;
+        // display: flex;
+        // flex-direction: column;
+    }
+    &__top{
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        overflow-y: auto;
+        background-color: #353a45;
+        max-height: calc(100vh - 230px);
+        margin-top: calc(100vh - (calc(100vh - 230px)) - 50px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .bets{
+            overflow-y: auto;
+        }
+        svg{
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+            text-align: center;
+            display: block;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        // &-svg{
+        //     width: ;
+        // }
+    }
+    &__bottom{
+        height: 50px;
+        display: flex;
+        width: 100%;
+        z-index: 333;
+        // margin-top: auto;
+        // flex-grow: 1;
+        
+
+        button{
+            flex-grow: 1;
+        }
+        .betlist{
+            background-color: #009d00;
+        }
+        .cashout{
+            background-color: #323232;
+        }
+    }
+}

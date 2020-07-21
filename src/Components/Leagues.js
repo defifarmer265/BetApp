@@ -29,7 +29,7 @@ class Leagues extends React.Component{
             this.props.fetchLeagues()
         }
         render(){
-            console.log(this.props.leagues)
+            // console.log(this.props.leagues)
             return(
              <div className="leagues">
                 <ul className="uk-list uk-list-divider list-group">

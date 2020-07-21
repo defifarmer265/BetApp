@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: 2fr 5fr minmax(275px, 2fr);
     @include respond-tablet {
-        grid-template-columns: 5fr minmax(250px, 2fr);
+        grid-template-columns: 5fr minmax(275px, 2fr);
     }
     @include respond-before-phone {
         grid-template-columns: 1fr;
@@ -37,6 +37,8 @@
     &__right{
         margin-left: 20px;
         flex-grow: 280px;
+        min-height: 300px !important;
+        background-color: #eaecef;
         // @include respond-tablet {
         //     display: none;
         // }
@@ -47,4 +49,145 @@
 }
 .main{
     background-color: #ff0;
+}
+
+@import './utils/variables';
+.betinfo{
+    min-height: 100%;
+    background-color: #fff;
+    border: 5px solid #353a45;
+    // background-color: #fff;
+    &__body{
+        margin: 0 10px;
+    }
+        &__option{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            text-align: center;
+            color: #fff;
+            background-color: #353a45;
+            padding-top: 15px;
+            padding-bottom: 8px;
+    
+            &-betslip,
+            &-cashout{
+                width: 80%;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                place-items: center;
+                padding-bottom: 5px;
+                cursor: pointer;
+                &.active{
+                    border-bottom: 3px solid $odd-color;
+                }
+                .circle{
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    color: #353a45;
+                    font-size: 15px;
+                    margin-left: -9px;
+                    border-radius: 45px;
+                    background-color: rgba(234, 236, 239, 0.15);
+                }
+            }
+            &-betslip{
+    
+            }
+            &-cashout{
+    
+            }
+        }
+        &__body{
+            
+            border-top: none;
+        }
+        &__remove{
+            width: 100%;
+            margin: 10px 0;
+            span{
+                cursor: pointer;
+                font-size: 12px;
+                display: block;
+                width: 70px;
+                box-sizing: border-box;
+                margin-left: auto;
+                border: 1px solid #EAECEF;
+                border-radius: 2px;
+                padding: 2px 4px;
+                color: #3656A3;
+                // height: 24px;
+            }
+        }
+    & .betInfo{
+        display: flex;
+        // align-items: stretch;
+        justify-content: flex-start;
+        max-height: 100px;
+        
+        
+        // margin-bottom: 7px;
+        
+
+        &__selected{
+            padding: 7px 0 0;
+            &-box{
+                // width: 14px;
+                // height: 14px;
+                // border: 1px solid #d8d8d8;
+                input{
+
+                    &:checked{
+                        background-color: $odd-color;
+                    }
+                }
+            }
+        }
+
+        &__main{
+            // height: 100px !important;
+            margin-left: 10px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 1px solid #EAECEF;
+            padding: 7px 0 0;
+            &-top{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                font-size: 13px;
+                // height: 30px !important;
+                svg{
+                    width: 15px;
+                    height: 15px;
+                    margin-right: 4px;
+                }
+                .market{
+                    margin: 0;
+                }
+            }
+        }
+
+        &__action{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #EAECEF;
+            padding: 7px 0 0;
+            &-cancel{
+                cursor: pointer;
+                svg{
+                    fill: #353A45;
+                }
+            }
+            &-odd{
+                font-weight: 600;
+            }
+        }
+    }
+    
 }

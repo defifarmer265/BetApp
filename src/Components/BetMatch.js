@@ -1,14 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {selectMatch} from '../actions'
+import {shortenText} from '../utils/utils'
 import {ReactComponent as Stats} from '../icons/statistics.svg'
 
 const BetMatch=(props)=>{
-    const shortenText=(text,startingPoint ,maxLength)=> {
-        return text.length > maxLength?
-           `${text.slice(startingPoint, maxLength)}...`:
-           text
-        }
         function selectMatch(market){
             const matchIncluded = props.selectedMatches.some(match=> match.match_id === props.match.match_id)
             if(!matchIncluded){

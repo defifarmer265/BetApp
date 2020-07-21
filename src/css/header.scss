@@ -1,35 +1,309 @@
 @import './utils/variables';
+@import './utils/mixins';
 .header{
     max-width: 100%;
-    min-height: 60px;
-    background-color: $color-primary;
+    background-color: $header-background !important;
     padding: 0 80px;
+    // overflow: hidden;
+    @include respond-before-phone {
+        padding: 0 20px;
+    }
+    @include respond-phone {
+        padding: 0 10px;
+    }
+    @include respond-tablet {
+        padding: 0 40px;
+    }
     &__body{
-        height: 60px;
+        // overflow: hidden;
         width: 100%;
         // background-color: #f00;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
 
-    &__logo{
-        font-weight: 600;
-        font-family: 'mukta';
-    }
-
-    &__main{
-        flex-grow: 1;
-
-            &-signin{
-                // margin-left: auto;
-                width: 560px;
-                margin-left: auto;
-                form{
-                margin-left: auto;   
-                width: 400px;
-                  display: flex;  
-                }                
+        &-left{
+            display: flex;
+            align-items: center;
+            &-menu{
+                display: none;
+                @include respond-before-phone {
+                    display: block;
+                }
             }
+            svg{
+                width: 30px;
+                height: 40px;
+                fill: #fff;
+                margin-right: 5px;
+            }
+            &-logo{
+                svg{
+                    width: auto;
+                    height: 40px;
+                    margin-left: 15px;
+                    fill: unset;
+                } 
+            }
+        }
+    }
+
+    &__options{
+        // background-color: #f0f !important;
+        height: 60px !important;
+        // flex-grow: 1;
+        .search{
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            margin-right: 5px;
+            svg{
+                fill: #fff;
+                width: 25px;
+                height: 25px;
+                font-weight: 700;
+                stroke: #fff;
+                stroke-width: 1.5px;
+            }
+        }
+        .header__register{
+            height: 35px;
+            background-color: $header-background;
+            border: .5px solid #fff;
+            color: #fff;
+            margin-left: 10px;
+            padding: 0 20px;
+            text-transform: unset;
+            border-radius: 2px;
+            font-size: $header-font-size;
+        }
+        &-auth{
+            // background-color: #00f;
+            &--web{
+                // @include respond-tablet {
+                //     display: none;
+                // }
+                @include respond-before-phone {
+                    display: none;
+                }
+                font-size: $header-font-size;
+                color: #fff;
+                display: flex;
+                text-align: center;
+                .button-group{
+                    position: relative;
+                    z-index: 9999999999;
+                    .header__button{
+                    height: 35px;
+                    background-color: transparent;
+                    border: none;
+                    color: #fff;
+                    font-size: $header-font-size;
+                    // &--auth{
+                    //     background-color: yellow !important;
+                    //     // border: 1px solid yellow;
+                    //     padding: 0;
+                    //     font-size: $header-font-size;
+                    //     text-transform: unset;
+                    // }
+                    &-open{
+                        position: absolute;
+                        width: 100%;
+                        background-color: transparent;
+                        
+                        &-on{
+                            width: 100%;
+                            span{
+                                display: none;
+                                width: 35px;
+                                height: 35px;
+                                background-color: #0ff;
+                                z-index: 99999;
+                                margin-left: 100px !important;
+                                // display: block;
+                                svg{
+                                    fill: #FAFD00 !important;
+                                }
+                            }
+                        }
+                        // width: 100%;
+                    }
+                }
+                }
+                
+
+                & .balance, & .deposit{
+                    display: grid;
+                    grid-template-columns: repeat(2, max-content);
+                    place-items: center; 
+                    span{
+                        cursor: pointer;
+                    }
+                                    
+                    &::after{
+                        content: '';
+                        width: 1px;
+                        height: 14px;
+                        background: #fff;
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0 16px;
+                    }
+                }
+                & .balance{
+                    .amount{
+                        color: #FAFD00;
+                        font-weight: 700;
+                        .visible{
+                            margin-left: 5px;
+                            position: relative;
+                            &::before {
+                                content: '\2758';
+                                font-size: 29px;
+                                color: #fff;
+                                font-style: normal;
+                                -webkit-font-smoothing: antialiased;
+                                -moz-osx-font-smoothing: grayscale;
+                                position: absolute;
+                                top: -12px;
+                                right: 5px;
+                                transform: rotate(45deg);
+                                font-weight: 100;
+                            }
+                        svg{
+                            width: 18px;
+                            height: 18px;
+                            fill: #fff;
+                        } 
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }  
+            &--mobile{
+                display: flex;
+                align-items: center;
+                display: none;
+                @include respond-before-phone {
+                    display: flex;
+                }
+                @include respond-phone {
+                    display: flex;
+                }
+                & > *{
+                    border-radius: 4px;
+                }
+                
+                .user{
+                    background-color: transparent;
+                    padding: 5px;
+                    height: 30px;
+                    box-sizing: border-box;
+                    border: .5px solid white;
+                    display: flex;
+                    justify-content: center;
+                    svg{
+                        width: 18px;
+                        height: 18px;
+                        fill: #fff;
+                    }
+                }
+                &-button{
+                    background-color: #fff;
+                    margin-right: 5px;
+                    color: $input-background
+                    
+                }
+            }
+            }
+            &-web{
+                display: flex;
+                @media (max-width: 900px) {
+                    display: none;
+                }
+                form{
+                    input{
+                        height: 35px;
+                        background: $input-background;
+                        border: none;
+                        font-size: 11.8px;
+                        color: #fff !important;
+                        &:focus{
+                            background: $input-background;
+                        }
+                        &::placeholder{
+                            font-size: 11.8px;
+                        }
+                        &:first-child{
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                .header__button{
+                    height: 35px;
+                    background-color: #7B0911;
+                    border: none;
+                    color: #fff;
+                    font-size: $header-font-size;
+                    // &--auth{
+                    //     background-color: yellow !important;
+                    //     // border: 1px solid yellow;
+                    //     padding: 0;
+                    //     font-size: $header-font-size;
+                    //     text-transform: unset;
+                    // }
+                }
+                
+        
+                .facebook{
+                    border: .5px solid #fff;
+                    height: 35px;
+                    width: 35px;
+                    margin-left: 10px;
+                    display: grid;
+                    place-items: center;
+                    padding: 3px;
+                    box-sizing: border-box;
+                    border-radius: 2px;
+                    cursor: pointer;
+                    svg{
+                        width: 18px;
+                        height: 18px;
+                        fill: #fff;
+                    }
+                }
+            }  
+            &-mobile{
+                display: none;
+                @media (max-width: 900px) {
+                    display: flex;
+                }                
+            }     
+        
+    }
+}
+
+.header__dropdown{
+    min-width: 100% !important;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    z-index: 999999;
+     background-color: #0f0;
+    ul{
+        font-size: $header-font-size;
+        padding: 0 15px;
+        li{
+            text-align: left;
+            &:not(:last-child){
+                margin: 3px  0;
+                cursor: pointer;
+            }
+            &.logout{
+                color: $header-background;
+                margin-bottom: 3px;
+                cursor: pointer;
+            }
+        }
     }
 }

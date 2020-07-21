@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import { Router, Route, Switch } from 'react-router-dom'
 import '../index.scss'
 import '../css/app.scss'
@@ -7,13 +8,19 @@ import Leagues from './Leagues'
 import BetInfo from './BetInfo'
 import MainView from './MainView'
 import League from './League'
-import axios from 'axios'
+import MobileBets from './MobileBets'
+import {refreshToken} from '../actions/auth'
+import { fetchBets } from "../actions";
 import history from '../history'
 
 
 class App extends React.Component{
-  componentDidMount(){
-    // axios
+  async componentWillMount(){
+    await this.props.refreshToken()
+    await this.props.fetchBets(this.props.authUser.localId)
+  }
+  getEl(){
+    console.log(document.querySelector('#modal-center'))
   }
   render(){
     return(
@@ -39,10 +46,14 @@ class App extends React.Component{
           </div>        
       </main>
       </Router>
+      <MobileBets />
       </div>
     )
 
 }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {authUser: state.authUser}
+}
+export default connect(mapStateToProps, {refreshToken, fetchBets})(App)

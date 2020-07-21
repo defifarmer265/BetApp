@@ -24,7 +24,7 @@ class MainView extends React.Component{
                 </div>
             )            
         }
-        console.log(this.props.matches)
+        // console.log(this.props.matches)
         // return <h2>Matches</h2>
         // return(
         //     <div>

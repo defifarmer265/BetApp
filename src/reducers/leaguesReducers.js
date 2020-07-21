@@ -14,7 +14,7 @@ export const fetchLeagueMatches = (leagueMatches=[], action)=>{
 
 export const leagueMatchesFetched = (leagueMatches=false, action)=>{
     if(action.type==='LEAGUES_MATCHES_FETCHED'){
-        console.log("yepa" +action.payload)
+        // console.log("yepa" +action.payload)
         return action.payload
     }
     return leagueMatches

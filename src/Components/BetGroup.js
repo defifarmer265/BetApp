@@ -8,7 +8,7 @@ import '../css/betGroup.scss'
 class BetInfo extends React.Component{
     state={matches: []}
 componentDidMount(){
-    console.log(this.props.matches)
+    // console.log(this.props.matches)
 
 }
 renderMatches(){

@@ -1,0 +1,28 @@
+@import './utils/variables';
+@import './utils/mixins';
+.betPlaced{
+
+    &__icon{
+        width: 100%;
+        svg{
+            display: block;
+            margin: 10px auto 10px !important;
+            width: 90px;
+            height: 90px;
+        }
+    }
+
+    &__message{
+        text-align: center;
+        color: $font-color;
+
+        &-code{
+
+            .bet-code{
+                font-weight: 700;
+                font-size: 20px;
+            }
+        }
+    }
+
+}
