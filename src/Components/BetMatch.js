@@ -33,22 +33,29 @@ const BetMatch=(props)=>{
             }
             return ''
         }
+        const matchTime = `${new Date(1000 *props.match.commence_time)
+            .getHours()}:${new Date(1000 *props.match.commence_time)
+            .getMinutes().toString().length===1 ? new Date(1000 *props.match.commence_time)
+            .getMinutes()+ '0' : new Date(1000 *props.match.commence_time)
+            .getMinutes()}`
     return(
         <tr className="betMatch" style={{borderBottom: '2pt solid red'}}>
             <td style={{width: '100px', fontWeight: 400}}>
-                {`${new Date(1000 *props.match.commence_time)
-                    .getHours()}:${new Date(1000 *props.match.commence_time)
-                    .getMinutes().toString().length===1 ? new Date(1000 *props.match.commence_time)
-                    .getMinutes()+ '0' : new Date(1000 *props.match.commence_time)
-                    .getMinutes()}`}<br />
+                <span className="match_detail">
+                    {matchTime}
+                </span>
+            
                 <span className="teamShow">
                 <div className="teamShow__stats">
                     <Stats />
+                    <span>
+                    {matchTime}
+                    </span>
                 </div>
                 <div className="teamShow__teams">
-                    {shortenText(props.match.home_team, 0, 11)} 
+                    {shortenText(props.match.home_team, 0, 15)} 
                 <br /> 
-                {shortenText(props.match.away_team, 0, 11)}
+                {shortenText(props.match.away_team, 0, 15)}
                 </div>
                  
                 </span>

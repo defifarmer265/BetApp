@@ -4,13 +4,21 @@
     // background-color: $bg-main;
     background-color: #eaecef;
     min-height: 100vh;
+    width: 100%;
+    @include respond-before-phone {
+        margin-bottom: 50px;
+    }
+}
+.error{
+    color: #7B0911;
+    font-size: 13px;
 }
 
 .main-content{
     max-width: 1100px;
     margin: 0 auto;
     min-height: 85vh;
-    margin-top: 20px;
+    
     background-color: #eaecef;
     display: grid;
     grid-template-columns: 2fr 5fr minmax(275px, 2fr);
@@ -19,6 +27,10 @@
     }
     @include respond-before-phone {
         grid-template-columns: 1fr;
+    }
+    @include respond-phone {
+        grid-template-columns: 1fr;
+        margin-top: -20px;
     }
         &__center{
             // flex-grow: 1;
@@ -190,4 +202,56 @@
         }
     }
     
+}
+
+.book-bet{
+    padding: 10px;
+    &__info, &__detail{
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    &__detail{
+        color: #DCDEE5
+    }
+    select{
+        border: .1px solid #0D9737;
+        option::selection{
+            background-color: #f00;
+        }
+    }
+    input{
+        text-transform: uppercase !important;
+        &:focus{
+            border: .1px solid #0D9737;
+        }
+        &::placeholder{
+            text-transform: unset !important;
+            font-size: 14px !important;
+        }
+    }
+    button{
+
+    }
+    .inactive{
+        background-color: #dcdee5;
+        color: #9CA0AB;
+        border: none;
+        &:hover{
+            border: none;
+            cursor: not-allowed
+        }
+    }
+    .active{
+        background-color: $odd-color;
+        color: $font-color;
+        cursor: pointer;
+        &:hover{
+            background-color: $button-hover;
+        }
+    }
+    input, select, button{
+        margin-top: 10px;
+        font-size: 14px;
+        text-transform: unset;
+    }
 }

@@ -3,16 +3,15 @@ import {connect} from 'react-redux'
 import {selectMatch} from '../actions'
 import SelectedMatches from "./SelectedMatches";
 import Cashout from './Cashout'
+import BookBet from "./BookBet";
 import '../css/betInfo.scss'
 
 class BetInfo extends React.Component{
-    state={currentComp: 'betslip', bookingCode: ''}
+    state={currentComp: 'betslip'}
     componentDidMount(){
         // console.log(Formik)
     }
-    onInputChange=(e)=>{
-        this.setState({bookingCode: e.target.value})
-    }
+    
         checkCurrenturrentComp(comp){
             return this.state.currentComp === comp ? 'active' : ''
         }
@@ -22,22 +21,7 @@ class BetInfo extends React.Component{
                    return <SelectedMatches /> 
                 }
                 return (
-                    <div className="book-bet">
-                    <p className="book-bet__info">To place a bet, click on the odds. Or insert a booking code</p>
-                    
-                    <div className="">
-                        <select className="uk-select">
-                            <option>Nigeria</option>
-                            <option>Kenya</option>
-                            <option>Ghana</option>
-                        </select>
-                    </div>
-                    <div className="">
-                        <input className="uk-input" type="text" placeholder="Booking Code"  value={this.state.bookingCode} onChange={this.onInputChange} />
-                    </div>
-                    <button class={`uk-button uk-button-default uk-width-1-1 ${this.state.bookingCode ? 'active' : 'inactive'}`}>Load</button>
-                    <p className="book-bet__detail">A booking code enables one to transfer a betslip between different devices.</p>
-                    </div>
+                    <BookBet />
                 )
                 
             }

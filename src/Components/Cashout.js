@@ -34,7 +34,7 @@ const Cashout=({authUser, fetchBets, placedBets})=>{
             {!authUser ? (
                 <div className="no-bets">
                     <span>
-                    No bets at the moment
+                    No bets at the moment👌
                     </span>
                 </div>
             ) : renderBets()}

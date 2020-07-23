@@ -66,7 +66,10 @@ function Sidebar({isOpen, closeModal}) {
                            </div>
                     
                         </div>
-                       <Leagues /> 
+                        <div className="sidebar__main-bottom">
+                            <Leagues /> 
+                        </div>
+                       
                     </div>                    
                 </div>  
                          

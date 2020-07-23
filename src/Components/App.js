@@ -17,7 +17,10 @@ import history from '../history'
 class App extends React.Component{
   async componentWillMount(){
     await this.props.refreshToken()
-    await this.props.fetchBets(this.props.authUser.localId)
+    if(this.props.authUser){
+      await this.props.fetchBets(this.props.authUser.localId)
+    }
+    
   }
   getEl(){
     console.log(document.querySelector('#modal-center'))

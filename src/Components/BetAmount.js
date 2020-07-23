@@ -7,16 +7,48 @@ import BetPlaced from './BetPlaced'
 import {ReactComponent as Cancel} from '../icons/cancel.svg'
 import Modal from './Modal'
 import { fetchBets } from "../actions";
+import { betAmount } from '../reducers/userReducers';
+import * as Yup from "yup";
 
 const BetAmount = (props)=>{
-    const formik = useFormik({
+    const {
+        values,
+        handleSubmit,
+        getFieldProps,
+        touched,
+        errors,
+        setFieldValue
+      } = useFormik({
         initialValues: {
-          betAmount: 0
+          betAmount: null
         },
+        validationSchema: Yup.object().shape({
+          betAmount: Yup.number()
+            .min(100, "Cannot be less than 100")
+            .required("Required")
+        }),
         onSubmit(values) {
-          // This will run when the form is submitted
+          // We added a `username` value for the user which is everything before @ in their email address.
+          placeBet('placed', true)
         }
       });
+    // const formik = useFormik({
+    //     initialValues: {
+    //       betAmount: null
+    //     },
+    //     validate(){
+    //         const errors = {};
+    //         if (formik.values.betAmount < 100 ) {
+    //             console.log("yass erro")
+    //             errors.betAmount = "Amount can't be less than 100"
+    //         }
+    //         return errors
+    //     },
+    //     onSubmit(values) {
+    //       // This will run when the form is submitted
+    //       placeBet('placed', true)
+    //     }
+    //   });
     // const [betAmount, setBetAmount] = useState(0)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [betType, setBetType] = useState('')
@@ -26,7 +58,7 @@ const BetAmount = (props)=>{
       const setAmount = (amount)=>{
         //   console.log(amount)
         // formik.values.betAmount = amount
-        formik.setFieldValue("betAmount", amount)
+        setFieldValue("betAmount", amount)
       }
     const calcTotalOdd = ()=>{
         const filteredMatches = props.selectedMatches
@@ -43,7 +75,7 @@ const BetAmount = (props)=>{
     }
 
     const calcWinning = ()=>{        
-        setPotentialWin(totalOdd*formik.values.betAmount)
+        setPotentialWin(totalOdd*values.betAmount)
         // console.log(`From calcWin---Total Odd: ${totalOdd} 
         // Bet Amount: ${formik.values.betAmount}
         // Potential Win: ${potentialWin}
@@ -56,9 +88,9 @@ const BetAmount = (props)=>{
         // console.log(`lmaooo bonus calculated, and the current potential win is: ${potentialWin}`)
     }
 
-    const checkAmountError = (comp)=>{
-        return formik.values.betAmount < 100 ? 'uk-form-danger' : ''
-    }
+    // const checkAmountError = (comp)=>{
+    //     return formik.values.betAmount < 100 ? 'uk-form-danger' : ''
+    // }
 
     const showBetInfo = (betType, modalState)=>{
         setBetType(betType)
@@ -67,14 +99,13 @@ const BetAmount = (props)=>{
     const placeBet = async (betType, modalState)=>{
         await axios.post(`https://betapp-54dbf.firebaseio.com/betlist/${props.authUser.localId}.json`, {
             selectedMatches: props.selectedMatches,
-            betAmount: formik.values.betAmount,
+            betAmount: values.betAmount,
             win: potentialWin + bonus,
             time: Date.now()
         })
         props.fetchBets(props.authUser.localId)
         setBetType(betType)
-        setIsModalOpen(modalState)
-
+        setIsModalOpen(modalState) 
     }
     const betInfo = ()=>{
         // setBetType(betType)
@@ -97,32 +128,35 @@ const BetAmount = (props)=>{
             // console.log("sec func")
             if(props.selectedMatches.length === 0){
                 setTotalOdd(0)
-                formik.values.betAmount = 0
+                values.betAmount = 0
                 setBonus(0)
                 setPotentialWin(0)
             }
         }
 
     },
-    [props.selectedMatches, formik.values.betAmount, totalOdd, bonus])
+    [props.selectedMatches, values.betAmount, totalOdd, bonus])
 
     return(
         <div className="betAmount">
             {betInfo()}
-               <form onSubmit={formik.handleSubmit} noValidate>
+               <form onSubmit={handleSubmit} noValidate>
                 <div className="betAmount__details">
                 <div className="betAmount__details-money">
                <small className="info">Amount</small>
                     <div class="input">
                     
-                        <input class={`${checkAmountError()} uk-input uk-form-width-xsmall`}
-                        name="betAmount"
+                        <input className={`${errors["betAmount"] ? 'uk-form-danger' : ''} uk-input uk-form-width-xsmall`}
+                         {...getFieldProps("betAmount")}
                         type="text" 
                         placeholder="Amount"
                         style={{width: '70px', height: '26px', textAlign: 'right'}}
-                        value={formik.values.betAmount} 
-                        onChange={formik.handleChange}
+                        
                         />
+                        <span className="invalid-feedback">
+                            {touched["betAmount"] && errors["betAmount"]}
+                        </span>
+                        {/* {formik.errors.betAmount ? <div className="invalid-feedback">{formik.errors.betAmount}</div> : null} */}
                         {/* <ErrorMessage
                     component="div"
                     name="betAmount"
@@ -169,8 +203,8 @@ const BetAmount = (props)=>{
                 <button class="uk-button uk-button-default uk-button-small cancel">Cancel</button>
                 {
                     props.authUser ? 
-                    <button class="uk-button uk-button-default uk-button-small bet" onClick={()=>placeBet('placed', true)}>Bet</button>
-                    :<button class="uk-button uk-button-default uk-button-small bet" onClick={()=>showBetInfo('booked', true)}>Book Bet</button>
+                    <button className={`uk-button uk-button-default uk-button-small bet ${!errors.betAmount ? 'active' : ''}`} type="submit">Bet</button>
+                    :<button className="uk-button uk-button-default uk-button-small bet active" onClick={()=>showBetInfo('booked', true)}>Book Bet</button>
                 }
                 </div>
             </div>

@@ -21,7 +21,7 @@ export const signUp = (user)=> async (dispatch, getState)=>{
     })
     }
     catch(err){
-
+        throw new Error(err);
     }
 }
 
@@ -45,7 +45,7 @@ export const signIn = (user)=> async (dispatch, getState)=>{
     })
     }
     catch(err){
-        
+        throw new Error(err);
     }
 }
 

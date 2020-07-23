@@ -1,9 +1,9 @@
 @import './utils/variables';
 .mainview{
     background-color: #ffffff;
-    width: 100%;
-    overflow-x: auto;
-    // padding: 1px;
+    max-width: 100% !important;
+    border: 1px solid #B4B4B4;
+    padding: 5px;
     &__top{
         color: #ddd;
         display: flex;
@@ -51,7 +51,7 @@
 &__options{
     display: flex;
     padding: 10px;
-    max-width: 400px;
+    max-width: 100% !important;
     overflow-x: auto;
     &-box{
         // padding: 14px 0 21px 12px;
@@ -61,6 +61,7 @@
         cursor: pointer;
         border-radius: 2px;
         background: #F7F7F7;
+        overflow: auto !important;
     }
 }
 }

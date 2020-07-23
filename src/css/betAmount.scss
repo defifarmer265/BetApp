@@ -96,11 +96,18 @@
                 margin-right: 15px;
             }
             .bet{
-                background-color: $odd-color;
+                
                 margin-left: auto;
                 transition: .15s all;
                 border: none;
+                background-color: $button-hover;
                 &:hover{
+                    background-color: $button-hover;
+                }
+                &.active{
+                    background-color: $odd-color;
+                }
+                &.inactive{
                     background-color: $button-hover;
                 }
             }

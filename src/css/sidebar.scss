@@ -10,7 +10,7 @@
     bottom: 0;
     background-color: rgba($color: #000000, $alpha: 0.6);
     z-index: 2222332 !important;
-    height: 100vh;
+    min-height: 100vh;
     &.w-100{
         width: 100%;
     }
@@ -24,9 +24,9 @@
         top: 0;
         left: 0;
         background-color: #fff;
-        height: 100vh;
+        max-height: 100vh;
         width: 300px;
-        overflow-x: auto;
+        // overflow-x: auto;
         transition: transform .2s cubic-bezier(.4,0,.2,1),-webkit-transform .2s cubic-bezier(.4,0,.2,1),-o-transform .2s cubic-bezier(.4,0,.2,1);
 
         &.sidebar__show{
@@ -37,10 +37,15 @@
         } 
         
         &__main{
-
+            display: flex;
+            flex-direction: column;
+            
             &-top{
-                padding: 10px;                
+                padding: 10px;        
                 background-color: $header-background;
+                position: fixed;
+                top: 0;
+                left: 0;z-index: 9999999999999;
                 &-action{
                     display: flex;
                     align-items: center;
@@ -121,7 +126,13 @@
                     height: 30px;
                     fill: #fff;
                     margin-left: -7px;
+                    stroke: #fff;
                 }
+            }
+            &-bottom{
+                height: calc(100vh - 165px);
+                overflow-x: auto;
+                margin-top: 165px;
             }
         }
     }

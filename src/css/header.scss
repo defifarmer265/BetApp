@@ -224,6 +224,15 @@
                     display: none;
                 }
                 form{
+                    display: flex;
+                    .form-content{
+                        display: flex;
+                        flex-direction: column;
+                        .error{
+                            color: #7B0911;
+                            font-size: 13px;
+                        }
+                    }
                     input{
                         height: 35px;
                         background: $input-background;
@@ -246,6 +255,7 @@
                     background-color: #7B0911;
                     border: none;
                     color: #fff;
+                    opacity: .7;
                     font-size: $header-font-size;
                     // &--auth{
                     //     background-color: yellow !important;
@@ -254,6 +264,9 @@
                     //     font-size: $header-font-size;
                     //     text-transform: unset;
                     // }
+                    &.active{
+                        opacity: 1;
+                    }
                 }
                 
         

@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
+import * as Yup from "yup";
 import '../css/header.scss'
 import '../css/modal.scss'
 import Sidebar from './Sidebar'
 import Modal from './Modal'
 import Login from './Login'
-import Register from './Register'
+import UserForm from './UserForm'
 import {connect} from 'react-redux'
 import {signIn, signOut} from '../actions/auth'
 import {Link} from 'react-router-dom'
@@ -17,14 +18,36 @@ import {ReactComponent as Search} from '../icons/search.svg'
 import {ReactComponent as Facebook} from '../icons/facebook.svg'
 import { ErrorMessage, useFormik } from "formik";
 export const Header = ({signIn, authUser, betAmount, signOut}) => {
-    const formik = useFormik({
+    const [error, setError] = useState('')
+      const {
+        values,
+        handleSubmit,
+        getFieldProps,
+        touched,
+        errors,
+        setFieldValue
+      } = useFormik({
         initialValues: {
-              email: '',
-              password: ''
-        },        
-        onSubmit(values) {
-            console.log("onSubmit")
-          signIn({email: formik.values.email, password: formik.values.password})
+            email: '',
+            password: ''
+        },
+        validationSchema: Yup.object().shape({
+            email: Yup.string()
+              .email("Invalid email address")
+              .required("Required"),
+            password: Yup.string()
+              .required("Required")
+          }),
+          async onSubmit(values) {
+              setError('')
+            try{
+                await signIn({email: values.email, password: values.password})
+            }
+            catch(err){
+                setError('Incorrect email/password')
+                console.log("lmaoo error")
+            }
+          
         }
       });
       const ModalComp = ()=>{
@@ -47,7 +70,8 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                       <div className="modal__body-bottom">
                           <div className="ball"></div>                          
                           <div className="modal__body-main">
-                                {currentComp === 'Register' ? <Register onRegistered={()=>setIsModalOpen(false)} /> : <Login onLogin={()=>setIsModalOpen(false)}/>}
+                                {/* {currentComp === 'Register' ? <Register onRegistered={()=>setIsModalOpen(false)} currentComp={currentComp} /> : <Login onLogin={()=>setIsModalOpen(false)}/>} */}
+                                <UserForm onRegistered={()=>setIsModalOpen(false)} currentComp={currentComp} />
                             </div> 
                       </div>
                                            
@@ -115,20 +139,28 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                     authUser ? isSignedIn() :
                     <>
                     <div className="header__options-web">
-                    <form  onSubmit={formik.handleSubmit}>
-                    <input className="uk-input uk-form-width-medium header__input" 
-                    type="text" 
-                    name="email" 
-                    placeholder="Email"
-                    value={formik.values.email} 
-                    onChange={formik.handleChange}/>
-                    <input className="uk-input uk-form-width-small header__input" 
-                    type="password" 
-                    name="password" 
-                    placeholder="Password"
-                    value={formik.values.password} 
-                    onChange={formik.handleChange}/>
-                    <button className="uk-button uk-button-default uk-button-small header__button" type="submit">Log in</button>
+                    <form  onSubmit={handleSubmit}>
+                        <div className="form-content">
+                          <input className="uk-input uk-form-width-medium header__input" 
+                            type="text" 
+                            {...getFieldProps("email")}
+                            placeholder="Email"/>  
+                            {error ? (<span className="error">{error}</span>): null}
+                            <span className="error">
+                                {touched["email"] && errors["email"]}
+                            </span>
+                        </div>
+                        <div className="form-content">
+                           <input className="uk-input uk-form-width-small header__input" 
+                            type="password" 
+                            {...getFieldProps("password")}
+                            placeholder="Password"/> 
+                            <span className="error">
+                                {touched["password"] && errors["password"]}
+                            </span>
+                        </div>
+                    
+                    <button className={`uk-button uk-button-default uk-button-small header__button ${(!errors.email && !errors.password && (touched["email"] || touched["password"])) ? 'active' : ''}`} type="submit">Log in</button>
                 </form>
                 <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>setIsModalOpen(true)}>Register</button>
                 <div className="facebook">

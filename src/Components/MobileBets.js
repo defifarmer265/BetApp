@@ -3,19 +3,37 @@ import {connect} from 'react-redux'
 import {ReactComponent as Arrow} from '../icons/arrow.svg'
 import '../css/mobileBets.scss'
 import SelectedMatches from "./SelectedMatches";
-const MobileBets = ()=> {
+import BookBet from "./BookBet";
+import Cashout from './Cashout'
+const MobileBets = (props)=> {
     console.log("rerendering MobileBet")
-    const [isMatchesShowing, setIsMatchesShowing] = useState(false)
+    const [isModalShowing, setIsModalShowing] = useState(false)
     const [currentComp, setCurrentComp] = useState('bets')
+    const openModal = (comp, modalShow)=>{
+        setCurrentComp(comp)
+        setIsModalShowing(modalShow)
+    }
+    const showBets = ()=>{
+        if(currentComp === 'selectedMatches'){
+            if(props.selectedMatches.length > 0){
+                return <SelectedMatches />
+            }
+            else{
+                return <BookBet />
+            }
 
+        }
+        return <Cashout />
+    }
     return (
         <div className="mobilebets">
-            {isMatchesShowing ? 
+            {isModalShowing ? 
             <div className="mobilebets__content">
                 <div className="mobilebets__top">
-                    <Arrow onClick={()=>setIsMatchesShowing(false)} />
+                    <Arrow onClick={()=>setIsModalShowing(false)} />
                     <div className="betinfo bets">
-                        <SelectedMatches />
+                        {showBets()}
+                        
                     </div>                 
                 </div>
             </div>
@@ -26,8 +44,8 @@ const MobileBets = ()=> {
             trying to update the markup of yhis component, since the buttons would always be on the screen
              */}
             <div className="mobilebets__bottom">
-                    <button class="uk-button uk-button-primary betlist" onClick={()=>setIsMatchesShowing(true)}>Betlist</button>
-                    <button class="uk-button uk-button-primary cashout">Cashout</button>
+                    <button class="uk-button uk-button-primary betlist" onClick={()=>openModal('selectedMatches', true)}>Betlist</button>
+                    <button class="uk-button uk-button-primary bet-cashout" onClick={()=>openModal('placedBets', true)}>Cashout</button>
             </div>
             </div>
     )

@@ -7,7 +7,7 @@ import {ReactComponent as Refresh} from '../icons/refresh.svg'
 class MainView extends React.Component{
     componentDidMount(){
         // console.log(this.props.posts)
-        // this.props.fetchMatches('soccer_epl')
+        this.props.fetchMatches('soccer_epl')
     }
     render(){
         // console.log(this.props.matches)
@@ -25,13 +25,13 @@ class MainView extends React.Component{
                 </div>
             </div>
             
-            <ul className="uk-tab">
+            {/* <ul className="uk-tab">
                 <li className="uk-active"><a href="#">Left</a></li>
                 <li><a href="#">Item</a></li>
                 <li><a href="#">Item</a></li>
             </ul>
 
-            {/* <div className="mainview__options">
+            <div className="mainview__options">
                 <div className="mainview__options-box">
                         Englan League
                 </div>

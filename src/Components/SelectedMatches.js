@@ -12,7 +12,8 @@ export class SelectedMatches extends Component {
                 <div className="betinfo__body">
                     <div className="betinfo__remove"><span onClick={()=>this.props.clearSelectedMatches()}>Remove All</span></div>
                     {this.renderselectedMatches()}
-                    <BetAmount />
+                    {this.props.selectedMatches.length > 0 ? <BetAmount /> : null}
+                    
                 </div>
             )
     }
@@ -28,20 +29,23 @@ export class SelectedMatches extends Component {
                         </div>
                         <div className="betInfo__main">
                             <div className="betInfo__main-top">
-                               <Football /> 
-                                <p className="market">{match.market}</p>
+                                <div className="betInfo__main-top-content">
+                                 <Football /> 
+                                <p className="market">{match.market}</p>   
+                                </div>
+                               
                             </div>
                             <div className="betInfo__main-middle"
                              title={`${match.home_team} v ${match.away_team}`}>
-                                <small>
+                                <span>
                                     {match.last_update
                                     .toString()
                                     .slice(match.last_update.toString().length-4
                                     , match.last_update.toString().length)}
-                                </small> | <small>{shortenText(`${match.home_team} v ${match.away_team}`, 0, 16)}</small>
+                                </span> | <span>{shortenText(`${match.home_team} v ${match.away_team}`, 0, 16)}</span>
                             </div>
                             <div className="betInfo__main-bottom">
-                                <small>1X2</small>
+                                <span>1X2</span>
                             </div>
                             
                         </div>

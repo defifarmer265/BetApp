@@ -2,13 +2,16 @@
 @import './utils/mixins';
 .leagues{
     background-color: #333333 !important;
-    min-height: 100%;
+    // min-height: 100vh;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0);
+    border: 1px solid #B4B4B4;
     @include respond-tablet {
         display: none;
     }
     .list-group{
         // margin: 0;
         // padding: 0;
+        margin-bottom: 0 !important;
         border-radius: 0;
         &-item{
             // list-style: none;

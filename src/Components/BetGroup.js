@@ -24,8 +24,7 @@ renderMatches(){
     if(previous !== formatedUnix){
     els.push(
         <tr key={el}>
-            <td colspan="2" className="match_date">{`${date.getDate().toString().length===1 ? '0'+date.getDate() : date.getDate()}
-            /${date.getMonth().toString().length===1 ? '0'+(date.getMonth()+1) : date.getMonth()}
+            <td colspan="2" className="match_date">{`${date.getDate().toString().length===1 ? '0'+date.getDate() : date.getDate()}/${date.getMonth().toString().length===1 ? '0'+(date.getMonth()+1) : date.getMonth()}
             ${date.toLocaleString("default", { weekday: "long" })}`}</td>
         </tr>    
     )

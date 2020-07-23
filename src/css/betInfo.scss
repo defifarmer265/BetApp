@@ -1,60 +1,14 @@
 @import './utils/variables';
+@import './utils/mixins';
 .betinfo{
     min-height: 182px;
     background-color: #fff;
     border: 5px solid #353a45;
-    // background-color: #fff;
-    .book-bet{
-        padding: 10px;
-        &__info, &__detail{
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-        &__detail{
-            color: #DCDEE5
-        }
-        select{
-            border: .1px solid #0D9737;
-            option::selection{
-                background-color: #f00;
-            }
-        }
-        input{
-            text-transform: uppercase !important;
-            &:focus{
-                border: .1px solid #0D9737;
-            }
-            &::placeholder{
-                text-transform: unset !important;
-                font-size: 14px !important;
-            }
-        }
-        button{
-
-        }
-        .inactive{
-            background-color: #dcdee5;
-            color: #9CA0AB;
-            border: none;
-            &:hover{
-                border: none;
-                cursor: not-allowed
-            }
-        }
-        .active{
-            background-color: $odd-color;
-            color: $font-color;
-            cursor: pointer;
-            &:hover{
-                background-color: $button-hover;
-            }
-        }
-        input, select, button{
-            margin-top: 10px;
-            font-size: 14px;
-            text-transform: unset;
-        }
+    @include respond-before-phone {
+        border-bottom: none;
     }
+    // background-color: #fff;
+
     &__body{
         margin: 0 10px 20px 10px;
     }
@@ -152,20 +106,38 @@
             justify-content: space-between;
             border-top: 1px solid #EAECEF;
             padding: 7px 0 0;
+            font-size: 13px;
             &-top{
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
+                
                 font-size: 13px;
-                // height: 30px !important;
-                svg{
+                &-content{
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+
+                    svg{
                     width: 15px;
                     height: 15px;
                     margin-right: 4px;
+                    margin-top: 0;
+                    fill: $font-color;
+                    }
+                    .market{
+                        margin: 0;
+                        font-weight: 600;
+                    }
                 }
-                .market{
-                    margin: 0;
-                }
+                // & > *{
+                //     display: block;
+                //     margin-right: auto !important;
+                // }
+                // height: 30px !important;
+                
+            }
+
+            &-bottom{
+                font-weight: 600;
+                letter-spacing: 2px;
             }
         }
 

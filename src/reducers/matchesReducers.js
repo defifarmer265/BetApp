@@ -10,6 +10,7 @@ export const selectMatch = (selectedMatches=[], action)=>{
         const matchIncluded = selectedMatches.some(match=> match.match_id === action.payload.match_id)
         if(!matchIncluded){
             //this means the match is not there at all and you anna add it
+            localStorage.setItem("selectedMatches", JSON.stringify([...selectedMatches, action.payload]))
             return [...selectedMatches, action.payload]
         }    
         else if(matchIncluded){
