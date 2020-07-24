@@ -44,7 +44,6 @@ import {signUp, signIn} from '../actions/auth'
             try{
                 if(currentComp === 'Register'){
                   await signUp({email: values.email, password: values.password})  
-                alert("regisster")
                 }
                 else{
                      await signIn({email: values.email, password: values.password})

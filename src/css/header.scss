@@ -197,23 +197,54 @@
                 }
                 
                 .user{
-                    background-color: transparent;
+                    background-color: $header-background;
                     padding: 5px;
                     height: 30px;
+                    width: 30px;
                     box-sizing: border-box;
                     border: .5px solid white;
                     display: flex;
                     justify-content: center;
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 222;
+                    // overflow: hidden;
+                    .header__button-open{
+                        
+                        &-on{
+                            position: absolute;
+                            z-index: 444;
+                            top: -5px;
+                            left: -13px;
+                            background-color: transparent;
+                            border: none !important;
+                            svg{
+                                fill: transparent !important;
+                            }
+                        }
+                        .header__dropdown{ 
+                        //  background-color: #0ff;                           
+                        position: absolute;
+                        top: 20px;
+                        left: -110px;
+                        z-index: 111;
+                        
+                    }
+                    }
+                    
                     svg{
                         width: 18px;
                         height: 18px;
                         fill: #fff;
+                        display: block;
+                        position: absolute;
+                        z-index: 333;
                     }
                 }
                 &-button{
-                    background-color: #fff;
+                    background-color: #fff !important;
                     margin-right: 5px;
-                    color: $input-background
+                    color: $input-background;
                     
                 }
             }
@@ -302,7 +333,7 @@
     min-width: 100% !important;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     z-index: 999999;
-     background-color: #0f0;
+     background-color: #fafafa;
     ul{
         font-size: $header-font-size;
         padding: 0 15px;

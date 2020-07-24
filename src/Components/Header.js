@@ -95,7 +95,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                                 <UserForm onRegistered={()=>setIsModalOpen(false)} currentComp={currentComp} />
                             </div> 
                       </div>
-                      </>)
+                      </>
                       
                                           
                     
@@ -136,9 +136,22 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                   <div className="search">
                      <Search /> 
                   </div>
-                  <button class="uk-button uk-button-default uk-button-small header__options-auth--mobile-button">Deposit</button>
+                  <button class="uk-button uk-button-default uk-button-small header__options-auth--mobile-button" onClick={()=>showCurrentComp('deposit', true)}>Deposit</button>
                   
                   <div className="user">
+                  <div class="uk-inline header__button-open">
+                            <button class="uk-button uk-button-default uk-button-small header__button header__button-open-on" type="button"><span uk-icon="icon:  triangle-down"></span></button>
+                            <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;" className="uk-padding-remove header__dropdown">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li>Gifts</li>
+                                    <li>Wiithdraw</li>
+                                    <li>My Account Info</li>
+                                    <li>Transactions</li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li className="logout" onClick={()=>signOut()}>Logout</li>
+                                </ul>
+                            </div>
+                        </div>
                      <User /> 
                   </div>
                   </div>
