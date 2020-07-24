@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Router, Route, Switch } from 'react-router-dom'
+import {addLocalStorage} from '../actions'
 import '../index.scss'
 import '../css/app.scss'
 import Header from './Header'
@@ -16,10 +17,16 @@ import history from '../history'
 
 class App extends React.Component{
   async componentWillMount(){
+    const selectedMatches = localStorage.getItem("selectedMatches")
+    console.log(JSON.parse(selectedMatches))
+    if(selectedMatches){
+      this.props.addLocalStorage(JSON.parse(selectedMatches))
+    }
     await this.props.refreshToken()
     if(this.props.authUser){
       await this.props.fetchBets(this.props.authUser.localId)
     }
+    
     
   }
   getEl(){
@@ -59,4 +66,4 @@ class App extends React.Component{
 const mapStateToProps = (state) => {
   return {authUser: state.authUser}
 }
-export default connect(mapStateToProps, {refreshToken, fetchBets})(App)
+export default connect(mapStateToProps, {refreshToken, fetchBets, addLocalStorage})(App)

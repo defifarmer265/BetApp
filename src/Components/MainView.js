@@ -7,7 +7,7 @@ import {ReactComponent as Refresh} from '../icons/refresh.svg'
 class MainView extends React.Component{
     componentDidMount(){
         // console.log(this.props.posts)
-        // this.props.fetchMatches('soccer_epl')
+        this.props.fetchMatches('soccer_epl')
     }
     render(){
         // console.log(this.props.matches)

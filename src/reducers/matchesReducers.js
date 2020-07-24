@@ -19,6 +19,9 @@ export const selectMatch = (selectedMatches=[], action)=>{
             // console.log(matchIncluded , action)
         }  
     }
+    else if(action.type==='ADD_LOCALSTORAGE'){
+        return action.payload
+    }
     else if(action.type === 'CHECK_MATCH'){
                 selectedMatches.find(match=>match.match_id === action.payload.match_id).checked = action.payload.checked
                 return [...selectedMatches]

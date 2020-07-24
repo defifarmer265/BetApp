@@ -149,7 +149,6 @@ const BetAmount = (props)=>{
 
     return(
         <div className="betAmount">
-            {`${ typeof props.betAmount} || ${typeof values.betAmount}` }
             {betInfo()}
                <form onSubmit={handleSubmit} noValidate>
                 <div className="betAmount__details">

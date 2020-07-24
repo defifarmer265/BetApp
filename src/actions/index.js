@@ -87,6 +87,16 @@ export const removeMatch = (betDetails)=>{
     }
 }
 
+export const addLocalStorage = (betDetails)=>{
+    // console.log(betDetails);
+    return{
+        type: "ADD_LOCALSTORAGE",
+        payload: betDetails
+    }
+}
+
+
+
 export const checkMatch = (betDetails)=>{
     // console.log(betDetails);
     return{
