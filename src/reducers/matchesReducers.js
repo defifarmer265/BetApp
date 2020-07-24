@@ -7,14 +7,16 @@ export const fetchMatches = (matches=[], action)=>{
 
 export const selectMatch = (selectedMatches=[], action)=>{
     if(action.type==='SELECT_MATCH'){
-        const matchIncluded = selectedMatches.some(match=> match.match_id === action.payload.match_id)
+        const matchIncluded = selectedMatches.find(match=> match.match_id === action.payload.match_id)
         if(!matchIncluded){
+            console.log(action)
             //this means the match is not there at all and you anna add it
             localStorage.setItem("selectedMatches", JSON.stringify([...selectedMatches, action.payload]))
             return [...selectedMatches, action.payload]
         }    
-        else if(matchIncluded){
+        else if(matchIncluded && matchIncluded.market === action.payload.market){
             return selectedMatches.filter(match => match.match_id !== action.payload.match_id) 
+            // console.log(matchIncluded , action)
         }  
     }
     else if(action.type === 'CHECK_MATCH'){

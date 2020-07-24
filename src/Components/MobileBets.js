@@ -44,14 +44,18 @@ const MobileBets = (props)=> {
             trying to update the markup of yhis component, since the buttons would always be on the screen
              */}
             <div className="mobilebets__bottom">
-                    <button class="uk-button uk-button-primary betlist" onClick={()=>openModal('selectedMatches', true)}>Betlist</button>
-                    <button class="uk-button uk-button-primary bet-cashout" onClick={()=>openModal('placedBets', true)}>Cashout</button>
+                    <button class="uk-button uk-button-primary betlist" onClick={()=>openModal('selectedMatches', true)}><span>Betlist</span><span className="circle">{props.selectedMatches.length}</span></button>
+                    <button class="uk-button uk-button-primary bet-cashout" onClick={()=>openModal('placedBets', true)}><span>Cashout</span><span className="circle">{props.placedBets.length}</span></button>
+                    
             </div>
             </div>
     )
 }
 
 const mapStateToProps =(state)=>{
-    return {selectedMatches: state.selectedMatches}
+    return {
+            selectedMatches: state.selectedMatches,
+            placedBets: state.placedBets
+        }
 }
 export default connect(mapStateToProps, null)(MobileBets)

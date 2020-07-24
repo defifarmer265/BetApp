@@ -65,7 +65,18 @@
         z-index: 333;
         // margin-top: auto;
         // flex-grow: 1;
-        
+        .betlist,
+        .bet-cashout{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            font-size: 17px;
+            text-align: center;
+            .circle{
+                margin-left: 7px;
+            }
+        }
 
         button{
             flex-grow: 1;

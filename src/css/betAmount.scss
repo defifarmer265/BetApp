@@ -101,11 +101,13 @@
                 transition: .15s all;
                 border: none;
                 background-color: $button-hover;
+                color: #fff;
                 &:hover{
                     background-color: $button-hover;
                 }
                 &.active{
                     background-color: $odd-color;
+                    color: #fff;
                 }
                 &.inactive{
                     background-color: $button-hover;

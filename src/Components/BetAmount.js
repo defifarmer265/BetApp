@@ -7,6 +7,7 @@ import BetPlaced from './BetPlaced'
 import {ReactComponent as Cancel} from '../icons/cancel.svg'
 import Modal from './Modal'
 import { fetchBets } from "../actions";
+import {updateBetAmount} from '../actions/auth'
 import { betAmount } from '../reducers/userReducers';
 import * as Yup from "yup";
 
@@ -25,6 +26,8 @@ const BetAmount = (props)=>{
         validationSchema: Yup.object().shape({
           betAmount: Yup.number()
             .min(100, "Cannot be less than 100")
+            .max(props.betAmount, 'Bet Amount cannot exceed balance')
+            .positive('Amount cannot be negative')
             .required("Required")
         }),
         onSubmit(values) {
@@ -97,15 +100,22 @@ const BetAmount = (props)=>{
         setIsModalOpen(modalState)
     }
     const placeBet = async (betType, modalState)=>{
-        await axios.post(`https://betapp-54dbf.firebaseio.com/betlist/${props.authUser.localId}.json`, {
+        try{
+            await axios.post(`https://betapp-54dbf.firebaseio.com/betlist/${props.authUser.localId}.json`, {
             selectedMatches: props.selectedMatches,
             betAmount: values.betAmount,
             win: potentialWin + bonus,
             time: Date.now()
         })
+        props.updateBetAmount(props.betAmount-values.betAmount)
         props.fetchBets(props.authUser.localId)
         setBetType(betType)
         setIsModalOpen(modalState) 
+        }
+        catch(e){
+
+        }
+        
     }
     const betInfo = ()=>{
         // setBetType(betType)
@@ -139,6 +149,7 @@ const BetAmount = (props)=>{
 
     return(
         <div className="betAmount">
+            {`${ typeof props.betAmount} || ${typeof values.betAmount}` }
             {betInfo()}
                <form onSubmit={handleSubmit} noValidate>
                 <div className="betAmount__details">
@@ -148,7 +159,7 @@ const BetAmount = (props)=>{
                     
                         <input className={`${errors["betAmount"] ? 'uk-form-danger' : ''} uk-input uk-form-width-xsmall`}
                          {...getFieldProps("betAmount")}
-                        type="text" 
+                        type="number" 
                         placeholder="Amount"
                         style={{width: '70px', height: '26px', textAlign: 'right'}}
                         
@@ -224,6 +235,6 @@ const mapStateToProps =(state)=>{
                 betAmount: state.betAmount
             }
 }
-export default connect(mapStateToProps, {fetchBets})(BetAmount)
+export default connect(mapStateToProps, {fetchBets, updateBetAmount})(BetAmount)
 //db-url: https://betapp-54dbf.firebaseio.com
 //auth-url: https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]

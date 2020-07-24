@@ -6,6 +6,7 @@ import Sidebar from './Sidebar'
 import Modal from './Modal'
 import Login from './Login'
 import UserForm from './UserForm'
+import CreditAccount from './CreditAccount'
 import {connect} from 'react-redux'
 import {signIn, signOut} from '../actions/auth'
 import {Link} from 'react-router-dom'
@@ -19,6 +20,10 @@ import {ReactComponent as Facebook} from '../icons/facebook.svg'
 import { ErrorMessage, useFormik } from "formik";
 export const Header = ({signIn, authUser, betAmount, signOut}) => {
     const [error, setError] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [modalBody, setModalBody] = useState('')
+    const [isOpen, setIsOpen] = useState(false)
+      const [currentComp, setCurrentComp] = useState("Register")
       const {
         values,
         handleSubmit,
@@ -50,22 +55,38 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
           
         }
       });
-      const ModalComp = ()=>{
-            const modal = isModalOpen ? (
-                <Modal>
-                  <div className="modal__body">
-                      <div className="modal__body-top">
-                          <div className="modal__body-top-cancel">
-                              <Cancel onClick={()=>setIsModalOpen(false)}/>
-                          </div>
+      const showCurrentComp = (modalBody, modalState)=>{
+        setModalBody(modalBody)
+        setIsModalOpen(modalState)
+    }
+//       const betInfo = ()=>{
+//         // setBetType(betType)
+//         const modal = isModalOpen && betType ? (
+//             <Modal>
+//               <div className="modal__body" style={{maxWidth: '450px', padding: '10px'}}>                                      
+//                 <Cancel onClick={()=>showBetInfo('', false)}/>
+//                 <CreditAccount betType={betType}/>
+//               </div>
+//             </Modal>
+//           ) : ''
+//           return modal
+//   }
+      const ModalComp = 
+                (<Modal>
+                    {modalBody === 'userForm' ?
+                  (<div className="modal__body">                       
+                    
+                     <>
+                     <div className="modal__body-top">                          
                           <div className="modal__body-top-info">
                               <div className="content">
                                   <div className={`register ${currentComp === 'Register' ? 'active' : ''} `} onClick={()=>setCurrentComp('Register')}>Register</div>
                                 <div className={`login ${currentComp === 'Login' ? 'active' : ''}`} onClick={()=>setCurrentComp('Login')}>Login</div>
                               </div>
-                              
                           </div>
-                        
+                          <div className="modal__body-top-cancel">
+                            <Cancel onClick={()=>setIsModalOpen(false)}/>
+                        </div>
                       </div>
                       <div className="modal__body-bottom">
                           <div className="ball"></div>                          
@@ -74,19 +95,26 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                                 <UserForm onRegistered={()=>setIsModalOpen(false)} currentComp={currentComp} />
                             </div> 
                       </div>
-                                           
+                      </>)
+                      
+                                          
                     
-                  </div>
-                </Modal>
-              ) : ''
-              return modal
-      }
+                </div>) : 
+                <div className="modal__body" style={{maxWidth: '450px', padding: '10px'}}>
+                    <div className="modal__body-top deposit">
+                        <span className="modal__text">Credit Account</span>
+                        <Cancel onClick={()=>setIsModalOpen(false)}/>
+                    </div>
+                    <CreditAccount close={()=>setIsModalOpen(false)} />
+              </div> }
+                </Modal>)
+      
       const isSignedIn=  ()=>{
           return(
               <div className="header__options-auth">
                   <div className="header__options-auth--web">
                      <div className="balance"><span className="amount">NGN{betAmount}<span className="visible"><Visible /></span></span></div>
-                  <div className="deposit"><span>Deposit</span></div>
+                  <div className="deposit" onClick={()=>showCurrentComp('deposit', true)}><span>Deposit</span></div>
                   <div class="uk-button-group button-group">
                     <button class="uk-button uk-button-default uk-button-small header__button">My Account</button>
                         <div class="uk-inline header__button-open">
@@ -117,13 +145,11 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
               </div>
           )
       }
-      const [isOpen, setIsOpen] = useState(false)
-      const [isModalOpen, setIsModalOpen] = useState(false)
-      const [currentComp, setCurrentComp] = useState("Register")
+      
       
     return (
         <nav className="uk-navbar-container uk-margin header" uk-navbar>
-            {ModalComp()}
+            {isModalOpen ? ModalComp : null}
         <div className="uk-navbar-left header__body">
             <div className="header__body-left">
                 <div className="header__body-left-menu" onClick={()=>setIsOpen(true)}>
@@ -162,7 +188,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                     
                     <button className={`uk-button uk-button-default uk-button-small header__button ${(!errors.email && !errors.password && (touched["email"] || touched["password"])) ? 'active' : ''}`} type="submit">Log in</button>
                 </form>
-                <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>setIsModalOpen(true)}>Register</button>
+                <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>showCurrentComp('userForm', true)}>Register</button>
                 <div className="facebook">
                     <Facebook />
                 </div>
@@ -171,7 +197,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                     <div className="search uk-margin-remove-right">
                      <Search /> 
                     </div>
-                    <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>setIsModalOpen(true)}>Register/Login</button>                    
+                    <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>showCurrentComp('userForm', true)}>Register/Login</button>                    
                 </div>
                 </>
                 }

@@ -83,6 +83,16 @@
                     }
                 }
             }
+            &.deposit{
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                height: unset;
+                background-color: #fff;
+                .modal__text{
+                    font-weight: 600;
+                }
+            }
         }
         &-bottom{
             background: url('../icons/ball-bg.jpg');
@@ -139,7 +149,7 @@
 
     &.active{
         background-color: $odd-color;
-        color: $font-color;
+        color: #fff;
     }
 }
 .login__option{

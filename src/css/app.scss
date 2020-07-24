@@ -13,7 +13,23 @@
     color: #7B0911;
     font-size: 13px;
 }
-
+.circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 16px !important;
+    color: #000;
+    margin-left: -9px;
+    border-radius: 100px;
+    background-color: rgba(234, 236, 239, 0.15);
+    span{
+        display: block;
+        color: red;
+        font-size: 15.5px;
+    }
+}
 .main-content{
     max-width: 1100px;
     margin: 0 auto;

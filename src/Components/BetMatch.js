@@ -6,8 +6,8 @@ import {ReactComponent as Stats} from '../icons/statistics.svg'
 
 const BetMatch=(props)=>{
         function selectMatch(market){
-            const matchIncluded = props.selectedMatches.some(match=> match.match_id === props.match.match_id)
-            if(!matchIncluded){
+            // const matchIncluded = props.selectedMatches.some(match=> match.match_id === props.match.match_id)
+            // if(!matchIncluded){
                 //this means that the match is not included in the array so add it with checked: true
                 props.selectMatch({...market,
                     checked: true ,
@@ -16,13 +16,13 @@ const BetMatch=(props)=>{
                     match_id: props.match.match_id,
                     last_update: props.match.sites[0].last_update
                 })
-            }
-            else{
-                //so the match is there, so it should be removed then. Call selectMatch and dont add the checked property, because that determines what happensa in the reducer
-               props.selectMatch({
-                    match_id: props.match.match_id
-                })
-            }
+            // }
+            // else{
+            //     //so the match is there, so it should be removed then. Call selectMatch and dont add the checked property, because that determines what happensa in the reducer
+            //    props.selectMatch({
+            //         match_id: props.match.match_id
+            //     })
+            // }
             
         }
         const checkSelected = (market)=>{
