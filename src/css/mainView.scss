@@ -4,7 +4,7 @@
     background-color: #ffffff;
     max-width: 100% !important;
     border: 1px solid #B4B4B4;
-    @include respond-phone {
+    @include respond-before-phone {
         border: none;
     }
     padding: 5px;

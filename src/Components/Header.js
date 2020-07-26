@@ -146,7 +146,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                                     <li>Gifts</li>
                                     <li>Wiithdraw</li>
                                     <li>My Account Info</li>
-                                    <li>Transactions</li>
+                                    <li className="balance">Balance: {betAmount}</li>
                                     <li class="uk-nav-divider"></li>
                                     <li className="logout" onClick={()=>signOut()}>Logout</li>
                                 </ul>

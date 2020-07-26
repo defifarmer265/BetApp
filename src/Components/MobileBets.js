@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
+import Transition from "react-transition-group/Transition";
 import {ReactComponent as Arrow} from '../icons/arrow.svg'
 import '../css/mobileBets.scss'
 import SelectedMatches from "./SelectedMatches";
@@ -25,20 +26,44 @@ const MobileBets = (props)=> {
         }
         return <Cashout />
     }
+
+    const addAnimation = (state)=>{
+        if(state==='entering'){
+            console.log('entering')
+            return 'slide-up-enter'
+        }
+        else if(state==='entered'){
+            console.log('entered')
+            return 'slide-up-enter-active'
+        }
+        else if(state==='exiting'){
+            console.log('exiting')
+            return 'slide-up-exit-active'
+        }
+    }
     return (
         <div className="mobilebets">
-            {isModalShowing ? 
-            <div className="mobilebets__content">
-                <div className="mobilebets__top">
-                    <Arrow onClick={()=>setIsModalShowing(false)} />
-                    <div className="betinfo bets">
-                        {showBets()}
+            
+                <Transition 
+                    in={isModalShowing} 
+                    timeout={200} 
+                    mountOnEnter 
+                    unmountOnExit>
+                        {state=>(
+                        <div className="mobilebets__content">
+                            <div className={`mobilebets__top ${addAnimation(state)}`}>
+                                <Arrow onClick={()=>setIsModalShowing(false)} />
+                                <div className="betinfo bets">
+                                    {showBets()}
+                                    
+                                </div>                 
+                            </div>
+                        </div>
+                        )}
                         
-                    </div>                 
-                </div>
-            </div>
-                 : ''
-            }
+                </Transition>
+                
+            
                    
             {/* You were trying to figure out why the odds were not updating in mobile and also
             trying to update the markup of yhis component, since the buttons would always be on the screen

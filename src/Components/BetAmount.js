@@ -32,27 +32,15 @@ const BetAmount = (props)=>{
         }),
         onSubmit(values) {
           // We added a `username` value for the user which is everything before @ in their email address.
-          placeBet('placed', true)
+          try{
+             placeBet('placed', true)
+          }
+          catch(err){
+
+          }
+
         }
       });
-    // const formik = useFormik({
-    //     initialValues: {
-    //       betAmount: null
-    //     },
-    //     validate(){
-    //         const errors = {};
-    //         if (formik.values.betAmount < 100 ) {
-    //             console.log("yass erro")
-    //             errors.betAmount = "Amount can't be less than 100"
-    //         }
-    //         return errors
-    //     },
-    //     onSubmit(values) {
-    //       // This will run when the form is submitted
-    //       placeBet('placed', true)
-    //     }
-    //   });
-    // const [betAmount, setBetAmount] = useState(0)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [betType, setBetType] = useState('')
     const [totalOdd, setTotalOdd] = useState(0)
@@ -113,7 +101,7 @@ const BetAmount = (props)=>{
         setIsModalOpen(modalState) 
         }
         catch(e){
-
+            throw new Error("Something went wrong")
         }
         
     }

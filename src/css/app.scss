@@ -7,6 +7,7 @@
     width: 100%;
     @include respond-before-phone {
         margin-bottom: 50px;
+        background-color: #fff;
     }
 }
 .error{
@@ -43,10 +44,12 @@
     }
     @include respond-before-phone {
         grid-template-columns: 1fr;
+        background-color: #fff;
     }
     @include respond-phone {
         grid-template-columns: 1fr;
         margin-top: -20px;
+        
     }
         &__center{
             // flex-grow: 1;
@@ -113,7 +116,7 @@
                     display: block;
                     width: 24px;
                     height: 24px;
-                    color: #353a45;
+                    color: #fff;
                     font-size: 15px;
                     margin-left: -9px;
                     border-radius: 45px;

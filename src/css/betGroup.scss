@@ -65,7 +65,17 @@
                 text-align: center;
                 display: flex;
                 justify-content: center;
-
+                background-color: #dff6ca;
+                font-weight: 600 !important;
+                border-radius: 2.5px;
+                border: none;
+                &:hover{
+                    border: none;
+                    background-color: #cef2af;
+                }
+                span{
+                    font-weight: 800 !important;
+                }
                 &.matchSelected{
                     background-color: $odd-color;
                 }

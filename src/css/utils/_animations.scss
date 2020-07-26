@@ -11,3 +11,23 @@
     transform: scale(1);
   }
   }
+  
+  @keyframes mobileBetsEnter {
+    0% {
+  transform: translateY(0)
+  }
+  
+  100% {
+    transform: translateY(0)
+  }
+  }
+
+  @keyframes mobileBetsLeave {
+    0% {
+  transform: translateY(0)
+  }
+  
+  100% {
+    transform: translateY(230px)
+  }
+  }

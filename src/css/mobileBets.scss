@@ -1,6 +1,6 @@
 @import './utils/variables';
 @import './utils/mixins';
-
+@import './utils/animations';
 .mobilebets{
     width: 100%;
     height: 50px;
@@ -26,7 +26,7 @@
         background-color:$modal-bg;
         width: 100%;
         height: 100vh;
-        z-index: 222;
+        z-index: 299;
         // height: 90vh;
         // display: flex;
         // flex-direction: column;
@@ -72,8 +72,9 @@
             justify-content: center;
             font-weight: 400;
             font-size: 17px;
-            text-align: center;
+            text-align: center;            
             .circle{
+                color: #fff;
                 margin-left: 7px;
             }
         }
@@ -89,3 +90,20 @@
         }
     }
 }
+
+.slide-up-enter,
+.slide-up-exit-active{
+    // can be used for initialization, ie. the initial state of the element, before it is visible
+    transition: all .3s cubic-bezier(.36,-0.01,.13,.97);
+    transform: translateY(290px) !important;
+    opacity: 0 !important;
+  }
+  .slide-up-enter-active{
+      opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all .3s cubic-bezier(.36,-0.01,.13,.97) !important;
+    
+  }
+  .slide-up-exit{
+    
+  }

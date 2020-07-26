@@ -238,7 +238,7 @@
                         fill: #fff;
                         display: block;
                         position: absolute;
-                        z-index: 333;
+                        z-index: 225;
                     }
                 }
                 &-button{
@@ -333,6 +333,7 @@
     min-width: 100% !important;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     z-index: 999999;
+    border-radius: 1.5px;
      background-color: #fafafa;
     ul{
         font-size: $header-font-size;
@@ -343,9 +344,13 @@
                 margin: 3px  0;
                 cursor: pointer;
             }
+            &.balance{
+                font-weight: 600;
+            }
             &.logout{
                 color: $header-background;
                 margin-bottom: 3px;
+                font-weight: 600;
                 cursor: pointer;
             }
         }
