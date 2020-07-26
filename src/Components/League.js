@@ -4,6 +4,8 @@ import'../css/mainView.scss';
 import {fetchLeagueMatches} from '../actions'
 import BetGroup from './BetGroup'
 import {ReactComponent as Refresh} from '../icons/refresh.svg'
+import {ReactComponent as LoadIcon} from '../icons/money-bag.svg' 
+
 class MainView extends React.Component{
     state={leaguesLoaded: false}
     async componentDidMount(){
@@ -17,45 +19,41 @@ class MainView extends React.Component{
         }
     }
     render(){
-        if(!this.props.matchesFetched){
-            return(
-                <div>
-                    <h2>Loading</h2>
-                </div>
-            )            
-        }
-        // console.log(this.props.matches)
-        // return <h2>Matches</h2>
-        // return(
-        //     <div>
-        //         {this.props.matches[0].sport_key}
-        //     </div>
-        // )
         return(
-            <div className="mainview">
-            <div className="mainview__top">
-            <div className="latest">
-                    <span className="circle"></span>
-                    <h2>Upcoming Matches</h2>
-                </div>
-                <div className="refresh">
-                    <span>Refresh</span>
-                    <Refresh />
-                </div>
-            </div>
-            
-            <ul className="uk-tab">
-                <li className="uk-active"><a href="#">Left</a></li>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
-            </ul>
-
-            <div className="mainview__matches">
-                <BetGroup matches={this.props.matches}/>
-            </div>
-        </div>
-        )
+        <div className="league">
+            {
+                !this.props.matchesFetched ? 
+                    (
+                        <div className="load-screen">
+                            <LoadIcon />
+                        </div>
+                    ) :
+                (
+                    <div className="mainview">
+                    <div className="mainview__top">
+                    <div className="latest">
+                            <span className="circle"></span>
+                            <h2>Upcoming Matches</h2>
+                        </div>
+                        <div className="refresh">
+                            <span>Refresh</span>
+                            <Refresh />
+                        </div>
+                    </div>
                     
+                    {/* <ul className="uk-tab">
+                        <li className="uk-active"><a href="#">Left</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                    </ul> */}
+        
+                    <div className="mainview__matches">
+                        <BetGroup matches={this.props.matches}/>
+                    </div>
+                </div>
+                )
+            }
+        </div>  )                
         }
     }    
 

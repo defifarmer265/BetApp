@@ -1,7 +1,7 @@
 // import oddsApi from '../apis/the-odds-api'
 import axios from 'axios'
 import { convertObjectToArray } from "../utils/utils";
-const KEY ='5e01d35719973ce040dc43662222215b'
+const KEY ='2c61ef4e8abf276a676863b868ccc621'
 const resolveAwayTeam=(match)=>{
     // if(match.teams[0] !== match.home_team){
     //     return match.teams[0]             

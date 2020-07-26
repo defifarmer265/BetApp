@@ -24,3 +24,10 @@ export const placedBets = (placedBets=[], action)=>{
     }
     return placedBets
 }
+
+export const appLoaded = (appLoaded=false, action)=>{
+    if(action.type==='APP_LOAD'){
+        return action.payload
+    }
+    return appLoaded
+}

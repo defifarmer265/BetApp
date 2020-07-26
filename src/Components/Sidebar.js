@@ -67,7 +67,7 @@ function Sidebar({isOpen, closeModal}) {
                     
                         </div>
                         <div className="sidebar__main-bottom">
-                            <Leagues /> 
+                            <Leagues leagueClicked={()=>closeModal()}/> 
                         </div>
                        
                     </div>                    

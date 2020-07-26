@@ -11,8 +11,9 @@ import MainView from './MainView'
 import League from './League'
 import MobileBets from './MobileBets'
 import {refreshToken} from '../actions/auth'
-import { fetchBets } from "../actions";
+import { fetchBets, fetchMatches } from "../actions";
 import history from '../history'
+import {ReactComponent as LoadIcon} from '../icons/money-bag.svg' 
 
 
 class App extends React.Component{
@@ -22,6 +23,7 @@ class App extends React.Component{
     if(selectedMatches){
       this.props.addLocalStorage(JSON.parse(selectedMatches))
     }
+    await this.props.fetchMatches('soccer_france_ligue_one')
     await this.props.refreshToken()
     if(this.props.authUser){
       await this.props.fetchBets(this.props.authUser.localId)
@@ -36,7 +38,9 @@ class App extends React.Component{
     return(
     <div className="app">
       <Router history={history}>
-      <Header />
+        {this.props.appLoaded ? (
+          <>
+            <Header />
         <main className="main-content">
           <div className="main-content__left">
             <Leagues />
@@ -55,6 +59,13 @@ class App extends React.Component{
             <BetInfo />
           </div>        
       </main>
+          </>
+        ) : (
+          <div className="loadScreen">
+            <LoadIcon />
+          </div>
+        )}
+      
       </Router>
       <MobileBets />
       </div>
@@ -64,6 +75,7 @@ class App extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return {authUser: state.authUser}
+  return {authUser: state.authUser,
+          appLoaded: state.appLoaded}
 }
-export default connect(mapStateToProps, {refreshToken, fetchBets, addLocalStorage})(App)
+export default connect(mapStateToProps, {refreshToken, fetchBets, addLocalStorage, fetchMatches})(App)

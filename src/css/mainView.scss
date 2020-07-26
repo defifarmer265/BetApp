@@ -1,5 +1,6 @@
 @import './utils/variables';
 @import './utils/mixins';
+@import './utils/animations';
 .mainview{
     background-color: #ffffff;
     max-width: 100% !important;
@@ -68,4 +69,24 @@
         overflow: auto !important;
     }
 }
+}
+
+.league{
+    position: relative;
+
+    .load-screen{
+        position: absolute;
+        width: 100%;
+        height: calc(100vh - 100px + 50px);
+        background-color: #eaecef;
+        display: grid;
+        place-items: center;
+        svg{            
+            width: 70px;
+            height: 70px;
+            display: block;
+            margin-top: -25px;
+            animation: 1.5s app-load linear forwards infinite;
+        }
+    }
 }

@@ -1,7 +1,7 @@
 @import './utils/variables';
 @import './utils/mixins';
 .leagues{
-    background-color: #333333 !important;
+    background-color: #fff !important;
     // min-height: 100vh;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0);
     border: 1px solid #B4B4B4;
@@ -51,5 +51,16 @@
                 }
             }
         }
+    }
+}
+
+.loaders{
+    // background-color: #0f0;
+    padding-left: 10px;
+    padding-right: 10px;
+    span{
+        background-color: #f00;
+        // display: ;
+        text-align: center;
     }
 }

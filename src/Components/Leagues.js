@@ -1,4 +1,5 @@
 import React from 'react'
+import { BulletList } from 'react-content-loader'
 import '../css/leagues.scss'
 import {ReactComponent as Star} from '../icons/star.svg'
 import {fetchLeagues} from '../actions'
@@ -20,6 +21,7 @@ class Leagues extends React.Component{
                                                     activeStyle={{
                                                         fontWeight: "700",
                                                       }}
+                                                      onClick={()=>this.props.leagueClicked()}
                                                      to={`/league/${league.key}`}>
                                                         {league.title}
                                                     </NavLink> <Star id={league.key} onClick={()=>this.lops(league.key)} />
@@ -33,7 +35,21 @@ class Leagues extends React.Component{
             return(
              <div className="leagues">
                 <ul className="uk-list uk-list-divider list-group">
-                    {this.renderLeagues()}
+                    {
+                        this.props.leagues.length > 0 ? this.renderLeagues() : (
+                            <div className="loaders">
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
+
+                            </div>
+                        )
+                    }                   
+                    
                 </ul>
             </div>   
             )

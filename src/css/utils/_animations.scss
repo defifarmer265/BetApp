@@ -31,3 +31,13 @@
     transform: translateY(230px)
   }
   }
+
+  @keyframes app-load{
+    0%, 100% {
+  transform: scale(0.85)
+  }
+  
+   65%{
+    transform: scale(1.25)
+  }
+  }

@@ -1,5 +1,6 @@
 @import './utils/variables';
 @import './utils/mixins';
+@import './utils/animations';
 .app{
     // background-color: $bg-main;
     background-color: #eaecef;
@@ -8,6 +9,25 @@
     @include respond-before-phone {
         margin-bottom: 50px;
         background-color: #fff;
+    }
+    .loadScreen{
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        background-color: #eaecef;
+        z-index: 9999999999999999999;
+        display: grid;
+        place-items: center;
+        svg{
+            width: 70px;
+            height: 70px;
+            display: block;
+            animation: 1.5s app-load linear forwards infinite;
+        }
     }
 }
 .error{
