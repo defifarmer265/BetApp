@@ -5,9 +5,9 @@
     // min-height: 100vh;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0);
     border: 1px solid #B4B4B4;
-    @include respond-tablet {
-        display: none;
-    }
+    // @include respond-tablet {
+    //     display: none;
+    // }
     .list-group{
         // margin: 0;
         // padding: 0;

@@ -27,15 +27,19 @@
             align-items: center;
             &-menu{
                 display: none;
+                @include respond-tablet{
+                    display: block;
+                }
                 @include respond-before-phone {
                     display: block;
                 }
             }
             svg{
-                width: 30px;
-                height: 40px;
+                width: 25px;
+                height: 25px;
                 fill: #fff;
                 margin-right: 5px;
+                cursor: pointer;
             }
             &-logo{
                 svg{

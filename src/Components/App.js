@@ -9,9 +9,10 @@ import Leagues from './Leagues'
 import BetInfo from './BetInfo'
 import MainView from './MainView'
 import League from './League'
+import Footer from "./Footer";
 import MobileBets from './MobileBets'
 import {refreshToken} from '../actions/auth'
-import { fetchBets, fetchMatches } from "../actions";
+import { fetchBets, fetchMatches, fetchLeagues } from "../actions";
 import history from '../history'
 import {ReactComponent as LoadIcon} from '../icons/money-bag.svg' 
 
@@ -28,6 +29,7 @@ class App extends React.Component{
     if(this.props.authUser){
       await this.props.fetchBets(this.props.authUser.localId)
     }
+    await this.props.fetchLeagues()
     
     
   }
@@ -43,7 +45,7 @@ class App extends React.Component{
             <Header />
         <main className="main-content">
           <div className="main-content__left">
-            <Leagues />
+            <Leagues leagueClicked={()=>{return}}/>
           </div>
           <div className="main-content__center">
             <Switch>
@@ -59,6 +61,7 @@ class App extends React.Component{
             <BetInfo />
           </div>        
       </main>
+      <Footer />
           </>
         ) : (
           <div className="loadScreen">
@@ -76,6 +79,7 @@ class App extends React.Component{
 
 const mapStateToProps = (state) => {
   return {authUser: state.authUser,
-          appLoaded: state.appLoaded}
+          appLoaded: state.appLoaded,
+          leagues: state.leagues}
 }
-export default connect(mapStateToProps, {refreshToken, fetchBets, addLocalStorage, fetchMatches})(App)
+export default connect(mapStateToProps, {refreshToken, fetchBets, addLocalStorage, fetchMatches, fetchLeagues})(App)

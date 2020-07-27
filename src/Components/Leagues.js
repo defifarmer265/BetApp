@@ -28,7 +28,7 @@ class Leagues extends React.Component{
                                                 </li>)
         }
         componentDidMount(){
-            this.props.fetchLeagues()
+            // this.props.fetchLeagues()
         }
         render(){
             // console.log(this.props.leagues)

@@ -29,6 +29,41 @@
             animation: 1.5s app-load linear forwards infinite;
         }
     }
+
+    .footer{
+        background-color: #1B1E25;
+        width: 100%;
+        height: 65px;
+        margin-top: 20px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+        color: #fff;
+        @include respond-before-phone {
+            display: none;
+        }
+        .owner{
+            display: flex;
+            h3{
+                color: #fff;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            .socials{
+
+                svg{
+                    width: 23px;
+                    height: 23px;
+                    display: block;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
 }
 .error{
     color: #7B0911;
