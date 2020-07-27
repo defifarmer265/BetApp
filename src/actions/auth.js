@@ -95,6 +95,10 @@ export const refreshToken = (user)=> async (dispatch, getState)=>{
             })
             
         }
+        dispatch({
+            type: "APP_LOAD",
+            payload: true
+        })
     }
     catch(err){
         dispatch({

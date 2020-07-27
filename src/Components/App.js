@@ -18,7 +18,7 @@ import {ReactComponent as LoadIcon} from '../icons/money-bag.svg'
 
 
 class App extends React.Component{
-  async componentWillMount(){
+  async componentDidMount(){
     const selectedMatches = localStorage.getItem("selectedMatches")
     if(selectedMatches){
       this.props.addLocalStorage(JSON.parse(selectedMatches))
