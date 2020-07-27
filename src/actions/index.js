@@ -16,7 +16,7 @@ export const fetchMatches = (league)=> async (dispatch, getState)=>{
     // console.log("Postsss", response.data)
     let matches = response.data.data
     for(let i=0; i<matches.length; i++){
-        matches[i].match_id = matches[i].teams.join('').replace(/\s/g, '')
+        matches[i].match_id = `${matches[i].teams.join('').replace(/\s/g, '')}${matches[i].commence_time}`
         matches[i].away_team = resolveAwayTeam(matches[i])
     }
     dispatch({
