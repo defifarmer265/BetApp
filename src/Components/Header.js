@@ -116,7 +116,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                      <div className="balance"><span className="amount">NGN{betAmount}<span className="visible"><Visible /></span></span></div>
                   <div className="deposit" onClick={()=>showCurrentComp('deposit', true)}><span>Deposit</span></div>
                   <div class="uk-button-group button-group">
-                    <button class="uk-button uk-button-default uk-button-small header__button">My Account</button>
+                    <button class="uk-button uk-button-default uk-button-small header__button">My Account👇</button>
                         <div class="uk-inline header__button-open">
                             <button class="uk-button uk-button-default uk-button-small header__button header__button-open-on" type="button"><span uk-icon="icon:  triangle-down"></span></button>
                             <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;" className="uk-padding-remove header__dropdown">
