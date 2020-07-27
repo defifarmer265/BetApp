@@ -89,12 +89,12 @@ import {signUp, signIn} from '../actions/auth'
         </div>
     </div>
     <button className={`uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom action ${(!errors.email && !errors.password && (touched["email"] || touched["password"])) ? 'active' : ''}`} type="submit">{buttonText}</button>
-        <div className="login__option">
+        {/* <div className="login__option">
             <div className="facebook-login">
                 <Facebook />
             </div>
             <p className="login__option-detail">Login with Facebook</p>
-        </div>
+        </div> */}
         
         
 </form>
