@@ -46,10 +46,11 @@ class MainView extends React.Component{
                         <li><a href="#">Item</a></li>
                         <li><a href="#">Item</a></li>
                     </ul> */}
-        
-                    <div className="mainview__matches">
+                    {this.props.matches.length > 0 ? (<div className="mainview__matches">
                         <BetGroup matches={this.props.matches}/>
-                    </div>
+                    </div>)
+                    : <p style={{textAlign: 'center'}}>No matches</p>}
+                    
                 </div>
                 )
             }

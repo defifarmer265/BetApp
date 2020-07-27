@@ -7,7 +7,6 @@ import SelectedMatches from "./SelectedMatches";
 import BookBet from "./BookBet";
 import Cashout from './Cashout'
 const MobileBets = (props)=> {
-    console.log("rerendering MobileBet")
     const [isModalShowing, setIsModalShowing] = useState(false)
     const [currentComp, setCurrentComp] = useState('bets')
     const openModal = (comp, modalShow)=>{
@@ -29,15 +28,12 @@ const MobileBets = (props)=> {
 
     const addAnimation = (state)=>{
         if(state==='entering'){
-            console.log('entering')
             return 'slide-up-enter'
         }
         else if(state==='entered'){
-            console.log('entered')
             return 'slide-up-enter-active'
         }
         else if(state==='exiting'){
-            console.log('exiting')
             return 'slide-up-exit-active'
         }
     }
@@ -69,8 +65,8 @@ const MobileBets = (props)=> {
             trying to update the markup of yhis component, since the buttons would always be on the screen
              */}
             <div className="mobilebets__bottom">
-                    <button class="uk-button uk-button-primary betlist" onClick={()=>openModal('selectedMatches', true)}><span>Betlist</span><span className="circle">{props.selectedMatches.length}</span></button>
-                    <button class="uk-button uk-button-primary bet-cashout" onClick={()=>openModal('placedBets', true)}><span>Cashout</span><span className="circle">{props.placedBets.length}</span></button>
+                    <button className="uk-button uk-button-primary betlist" onClick={()=>openModal('selectedMatches', true)}><span>Betlist</span><span className="circle">{props.selectedMatches.length}</span></button>
+                    <button className="uk-button uk-button-primary bet-cashout" onClick={()=>openModal('placedBets', true)}><span>Cashout</span><span className="circle">{props.placedBets.length}</span></button>
                     
             </div>
             </div>

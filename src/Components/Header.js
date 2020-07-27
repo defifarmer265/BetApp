@@ -4,7 +4,6 @@ import '../css/header.scss'
 import '../css/modal.scss'
 import Sidebar from './Sidebar'
 import Modal from './Modal'
-import Login from './Login'
 import UserForm from './UserForm'
 import CreditAccount from './CreditAccount'
 import {connect} from 'react-redux'
@@ -17,20 +16,19 @@ import {ReactComponent as Menu} from '../icons/menu.svg'
 import {ReactComponent as User} from '../icons/user.svg'
 import {ReactComponent as Search} from '../icons/search.svg'
 import {ReactComponent as Facebook} from '../icons/facebook.svg'
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 export const Header = ({signIn, authUser, betAmount, signOut}) => {
     const [error, setError] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [modalBody, setModalBody] = useState('')
     const [isOpen, setIsOpen] = useState(false)
+    const [showBalance, setShowBalance] = useState(true)
       const [currentComp, setCurrentComp] = useState("Register")
       const {
-        values,
         handleSubmit,
         getFieldProps,
         touched,
         errors,
-        setFieldValue
       } = useFormik({
         initialValues: {
             email: '',
@@ -95,9 +93,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                                 <UserForm onRegistered={()=>setIsModalOpen(false)} currentComp={currentComp} />
                             </div> 
                       </div>
-                      </>
-                      
-                                          
+                      </>                                         
                     
                 </div>) : 
                 <div className="modal__body" style={{maxWidth: '450px', padding: '10px'}}>
@@ -113,19 +109,19 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
           return(
               <div className="header__options-auth">
                   <div className="header__options-auth--web">
-                     <div className="balance"><span className="amount">NGN{betAmount}<span className="visible"><Visible /></span></span></div>
+                     <div className="balance"><span className="amount">NGN{showBalance ? betAmount : '*****'}<span className={`visible ${showBalance ? '' : 'hide-balance'}`} onClick={()=>{setShowBalance(!showBalance)}}><Visible /></span></span></div>
                   <div className="deposit" onClick={()=>showCurrentComp('deposit', true)}><span>Deposit</span></div>
-                  <div class="uk-button-group button-group">
-                    <button class="uk-button uk-button-default uk-button-small header__button">My Account👇</button>
-                        <div class="uk-inline header__button-open">
-                            <button class="uk-button uk-button-default uk-button-small header__button header__button-open-on" type="button"><span uk-icon="icon:  triangle-down"></span></button>
+                  <div className="uk-button-group button-group">
+                    <button className="uk-button uk-button-default uk-button-small header__button">&nbsp;<span role="img" aria-label="no-bet">My Account👇</span> </button>
+                        <div className="uk-inline header__button-open">
+                            <button className="uk-button uk-button-default uk-button-small header__button header__button-open-on" type="button"><span uk-icon="icon:  triangle-down"></span></button>
                             <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;" className="uk-padding-remove header__dropdown">
-                                <ul class="uk-nav uk-dropdown-nav">
+                                <ul className="uk-nav uk-dropdown-nav">
                                     <li>Gifts</li>
                                     <li>Wiithdraw</li>
                                     <li>My Account Info</li>
                                     <li>Transactions</li>
-                                    <li class="uk-nav-divider"></li>
+                                    <li className="uk-nav-divider"></li>
                                     <li className="logout" onClick={()=>signOut()}>Logout</li>
                                 </ul>
                             </div>
@@ -136,18 +132,18 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                   <div className="search">
                      <Search /> 
                   </div>
-                  <button class="uk-button uk-button-default uk-button-small header__options-auth--mobile-button" onClick={()=>showCurrentComp('deposit', true)}>Deposit</button>
+                  <button className="uk-button uk-button-default uk-button-small header__options-auth--mobile-button" onClick={()=>showCurrentComp('deposit', true)}>Deposit</button>
                   
                   <div className="user">
-                  <div class="uk-inline header__button-open">
-                            <button class="uk-button uk-button-default uk-button-small header__button header__button-open-on" type="button"><span uk-icon="icon:  triangle-down"></span></button>
+                  <div className="uk-inline header__button-open">
+                            <button className="uk-button uk-button-default uk-button-small header__button header__button-open-on" type="button"><span uk-icon="icon:  triangle-down"></span></button>
                             <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;" className="uk-padding-remove header__dropdown">
-                                <ul class="uk-nav uk-dropdown-nav">
+                                <ul className="uk-nav uk-dropdown-nav">
                                     <li>Gifts</li>
                                     <li>Wiithdraw</li>
                                     <li>My Account Info</li>
                                     <li className="balance">Balance: {betAmount}</li>
-                                    <li class="uk-nav-divider"></li>
+                                    <li className="uk-nav-divider"></li>
                                     <li className="logout" onClick={()=>signOut()}>Logout</li>
                                 </ul>
                             </div>
@@ -161,7 +157,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
       
       
     return (
-        <nav className="uk-navbar-container uk-margin header" uk-navbar>
+        <nav className="uk-navbar-container uk-margin header" uk-navbar="true">
             {isModalOpen ? ModalComp : null}
         <div className="uk-navbar-left header__body">
             <div className="header__body-left">

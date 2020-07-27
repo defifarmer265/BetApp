@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import * as Yup from "yup";
-import {ReactComponent as Facebook} from '../icons/facebook.svg'
 import '../css/modal.scss'
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 import {signUp, signIn} from '../actions/auth'
  const Register = ({signUp, onRegistered, currentComp, signIn})=> {
-     console.log(currentComp)
+    //  console.log(currentComp)
     const [error, setError] = useState('')
     // const formik = useFormik({
     //     initialValues: {
@@ -21,12 +20,10 @@ import {signUp, signIn} from '../actions/auth'
     //     }
     //   });
       const {
-        values,
         handleSubmit,
         getFieldProps,
         touched,
         errors,
-        setFieldValue
       } = useFormik({
         initialValues: {
             email: '',
@@ -64,6 +61,7 @@ import {signUp, signIn} from '../actions/auth'
 {/* {error ? (<span className="error">{error}</span>): null} */}
     <div className="uk-width-1-1">
     <span className="error">
+    {error ? (<span className="error">{error}</span>): null}
                 {touched["email"] && errors["email"]}
             </span>
         <div className="uk-inline uk-width-1-1">

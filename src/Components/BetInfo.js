@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {selectMatch} from '../actions'
 import SelectedMatches from "./SelectedMatches";
 import Cashout from './Cashout'
 import BookBet from "./BookBet";
@@ -29,7 +28,6 @@ class BetInfo extends React.Component{
         }
 
     render(){
-        console.log("check updated")
         return(
         <div className="betinfo">
             <div className="betinfo__option">

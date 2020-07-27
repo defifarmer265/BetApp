@@ -19,11 +19,11 @@ export class SelectedMatches extends Component {
     }
     renderselectedMatches(){
         return this.props.selectedMatches.map(match=>{
-            return (<div className="betInfo">
+            return (<div key={match.match_id} className="betInfo">
                         <div className="betInfo__selected">
                             <div className="betInfo__selected-box">
-                            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                <label><input class="uk-checkbox" name={match.match_id} type="checkbox" id={match.match_id} onClick={()=>this.unCheck(match.match_id, match.checked)} checked={match.checked}/></label>
+                            <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                <label><input className="uk-checkbox" name={match.match_id} type="checkbox" id={match.match_id} onChange={()=>this.unCheck(match.match_id, match.checked)} checked={match.checked}/></label>
                             </div>
                             </div>
                         </div>

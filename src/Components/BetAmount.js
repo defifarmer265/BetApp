@@ -2,13 +2,12 @@ import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import '../css/betAmount.scss'
-import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 import BetPlaced from './BetPlaced'
 import {ReactComponent as Cancel} from '../icons/cancel.svg'
 import Modal from './Modal'
 import { fetchBets } from "../actions";
 import {updateBetAmount} from '../actions/auth'
-import { betAmount } from '../reducers/userReducers';
 import * as Yup from "yup";
 
 const BetAmount = (props)=>{
@@ -21,7 +20,7 @@ const BetAmount = (props)=>{
         setFieldValue
       } = useFormik({
         initialValues: {
-          betAmount: null
+          betAmount: 0
         },
         validationSchema: Yup.object().shape({
           betAmount: Yup.number()
@@ -142,7 +141,7 @@ const BetAmount = (props)=>{
                 <div className="betAmount__details">
                 <div className="betAmount__details-money">
                <small className="info">Amount</small>
-                    <div class="input">
+                    <div className="input">
                     
                         <input className={`${errors["betAmount"] ? 'uk-form-danger' : ''} uk-input uk-form-width-xsmall`}
                          {...getFieldProps("betAmount")}
@@ -198,7 +197,7 @@ const BetAmount = (props)=>{
                     <div className="betAmount__actions-suggest-button" onClick={()=>setAmount(1000)}>1000</div>
                 </div>
                 <div className="betAmount__actions-buttons">
-                <button class="uk-button uk-button-default uk-button-small cancel">Cancel</button>
+                <button className="uk-button uk-button-default uk-button-small cancel">Cancel</button>
                 {
                     props.authUser ? 
                     <button className={`uk-button uk-button-default uk-button-small bet ${!errors.betAmount ? 'active' : ''}`} type="submit">Bet</button>

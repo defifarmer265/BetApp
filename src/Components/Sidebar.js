@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import Leagues from './Leagues'
 import '../css/sidebar.scss'
@@ -9,7 +9,6 @@ import {ReactComponent as Live} from '../icons/live.svg'
 import {ReactComponent as Jackpot} from '../icons/jackpot.svg'
 import {ReactComponent as Livescore} from '../icons/livescore.svg'
 import {ReactComponent as Virtual} from '../icons/virtual.svg'
-import {ReactComponent as Load} from '../icons/load.svg'
 function Sidebar({isOpen, closeModal}) {
     const renderSidebar = ()=>{
            return(
@@ -20,7 +19,7 @@ function Sidebar({isOpen, closeModal}) {
                             <div className="sidebar__main-top-action">
                                 <Cancel onClick={()=>closeModal()}/> 
                                 <div className="sidebar__main-top-action-home">
-                                    <Link>
+                                    <Link to="/">
                                     <Home />
                                         <span>Home</span>
                                     </Link>

@@ -1,23 +1,20 @@
-import React, {useState} from 'react'
+import React from 'react'
 import * as Yup from "yup";
 import {connect} from 'react-redux'
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 import { PaystackButton } from 'react-paystack'
 import '../css/creditAccount.scss'
-import { authUser } from '../reducers/userReducers';
 import {updateBetAmount} from '../actions/auth'
 
 const PAYSTACK_PUBLIC_KEY = 'pk_test_98fd65341f193151b11213ad43bd7e8504dcbfc8'
 
 const CreditAccount = (props)=> {
-    const [betAmount, setBetAmount] = useState(0)
     const {
         values,
         handleSubmit,
         getFieldProps,
         touched,
-        errors,
-        setFieldValue
+        errors
       } = useFormik({
         initialValues: {
             credit: 0

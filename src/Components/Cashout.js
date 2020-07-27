@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import { fetchBets } from "../actions";
 import '../css/cashout.scss'
 import {ReactComponent as Arrow} from '../icons/arrow.svg' 
 import SingleBetMatch from './SingleBetMatch'
@@ -23,7 +22,7 @@ const Cashout=({authUser, fetchBets, placedBets})=>{
         ))  
         }
         return(<div className="no-bets">
-            <span>
+            <span role="img" aria-label="no-bet">
                 You havent placed any bet🤔
             </span>
             
@@ -33,7 +32,7 @@ const Cashout=({authUser, fetchBets, placedBets})=>{
     return <div className="cashout">
             {!authUser ? (
                 <div className="no-bets">
-                    <span>
+                    <span role="img" aria-label="zero-bet">
                     No bets at the moment👌
                     </span>
                 </div>

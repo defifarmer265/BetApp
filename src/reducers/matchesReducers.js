@@ -9,7 +9,6 @@ export const selectMatch = (selectedMatches=[], action)=>{
     if(action.type==='SELECT_MATCH'){
         const matchIncluded = selectedMatches.find(match=> match.match_id === action.payload.match_id)
         if(!matchIncluded){
-            console.log(action)
             //this means the match is not there at all and you anna add it
             localStorage.setItem("selectedMatches", JSON.stringify([...selectedMatches, action.payload]))
             return [...selectedMatches, action.payload]
@@ -31,6 +30,7 @@ export const selectMatch = (selectedMatches=[], action)=>{
         return selectedMatches.filter(match => match.match_id !== action.payload.match_id)
     }
     else if(action.type==='REMOVE_MATCHES'){
+        localStorage.setItem("selectedMatches", JSON.stringify([]))
         return []
     }
     return selectedMatches

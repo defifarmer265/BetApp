@@ -15,7 +15,7 @@ class Leagues extends React.Component{
         document.getElementById(`${id}`).classList.toggle("selected")
     }
     renderLeagues(){
-        return this.props.leagues.map(league=> <li className="list-group-item">
+        return this.props.leagues.map(league=> <li className="list-group-item" key={league.key}>
                                                     <NavLink
                                                     className="league-link"
                                                     activeStyle={{

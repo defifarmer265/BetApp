@@ -19,8 +19,8 @@
             margin: 10px;
             .circle{
                 display: block;
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
                 margin-right: 4px;
                 border-radius: 45px;
                 background-color: #0D9737;
@@ -81,9 +81,10 @@
         background-color: #eaecef;
         display: grid;
         place-items: center;
-        svg{            
-            width: 70px;
-            height: 70px;
+        svg{     
+            filter: grayscale(100%);       
+            width: 50px;
+            height: 50px;
             display: block;
             margin-top: -25px;
             animation: 1.5s app-load linear forwards infinite;

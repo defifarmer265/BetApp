@@ -161,7 +161,8 @@
                         .visible{
                             margin-left: 5px;
                             position: relative;
-                            &::before {
+                            &.hide-balance{
+                                &::before {
                                 content: '\2758';
                                 font-size: 29px;
                                 color: #fff;
@@ -173,6 +174,7 @@
                                 right: 5px;
                                 transform: rotate(45deg);
                                 font-weight: 100;
+                            }
                             }
                         svg{
                             width: 18px;
