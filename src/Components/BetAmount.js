@@ -30,7 +30,6 @@ const BetAmount = (props)=>{
             .required("Required")
         }),
         onSubmit(values) {
-          // We added a `username` value for the user which is everything before @ in their email address.
           try{
              placeBet('placed', true)
           }
@@ -143,7 +142,7 @@ const BetAmount = (props)=>{
                <small className="info">Amount</small>
                     <div className="input">
                     
-                        <input className={`${errors["betAmount"] ? 'uk-form-danger' : ''} uk-input uk-form-width-xsmall`}
+                        <input className={`${errors["betAmount"] && props.authUser ? 'uk-form-danger' : ''} uk-input uk-form-width-xsmall`}
                          {...getFieldProps("betAmount")}
                         type="number" 
                         placeholder="Amount"
@@ -151,7 +150,7 @@ const BetAmount = (props)=>{
                         
                         />
                         <span className="invalid-feedback">
-                            {touched["betAmount"] && errors["betAmount"]}
+                            {props.authUser && (touched["betAmount"] && errors["betAmount"])}
                         </span>
                         {/* {formik.errors.betAmount ? <div className="invalid-feedback">{formik.errors.betAmount}</div> : null} */}
                         {/* <ErrorMessage
