@@ -24,12 +24,12 @@ class App extends React.Component{
     if(selectedMatches){
       this.props.addLocalStorage(JSON.parse(selectedMatches))
     }
-    // await this.props.fetchMatches('soccer_france_ligue_one')
+    await this.props.fetchMatches('soccer_france_ligue_one')
     await this.props.refreshToken()
-    // if(this.props.authUser){
-    //   await this.props.fetchBets(this.props.authUser.localId)
-    // }
-    // await this.props.fetchLeagues()
+    if(this.props.authUser){
+      await this.props.fetchBets(this.props.authUser.localId)
+    }
+    await this.props.fetchLeagues()
     
     
   }
