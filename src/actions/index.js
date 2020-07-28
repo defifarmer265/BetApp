@@ -23,12 +23,10 @@ export const fetchMatches = (league)=> async (dispatch, getState)=>{
         type: "FETCH_MATCHES",
         payload: response.data.data
     })
-    // console.log(getState(), "steter")
 }
 
 export const fetchLeagues = ()=> async (dispatch, getState)=>{
     const response = await axios.get(`https://api.the-odds-api.com/v3/sports/?apiKey=${KEY}`)
-    // console.log("Postsss", response.data)
     let leagues = response.data.data.filter(league=> league.group.includes('Soccer'))
     dispatch({
         type: "FETCH_LEAGUES",
@@ -50,7 +48,6 @@ export const fetchLeagueMatches = (league)=> async (dispatch, getState)=>{
         payload: false
     })
     const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${KEY}&region=uk&mkt=h2h&sport=${league}`)
-    // console.log("Postsss", response.data)
     let matches = response.data.data
     for(let i=0; i<matches.length; i++){
         matches[i].match_id = matches[i].teams.join('').replace(/\s/g, '')
@@ -66,13 +63,9 @@ export const fetchLeagueMatches = (league)=> async (dispatch, getState)=>{
         payload: true
     })
 
-    
-    // console.log(getState(), "steter")
 }
 
-export const selectMatch = (betDetails)=>{
-    // console.log(betDetails);
-    
+export const selectMatch = (betDetails)=>{    
     return{
         type: "SELECT_MATCH",
         payload: betDetails
@@ -80,7 +73,6 @@ export const selectMatch = (betDetails)=>{
 }
 
 export const removeMatch = (betDetails)=>{
-    // console.log(betDetails);
     return{
         type: "REMOVE_MATCH",
         payload: betDetails
@@ -88,17 +80,13 @@ export const removeMatch = (betDetails)=>{
 }
 
 export const addLocalStorage = (betDetails)=>{
-    // console.log(betDetails);
     return{
         type: "ADD_LOCALSTORAGE",
         payload: betDetails
     }
 }
 
-
-
 export const checkMatch = (betDetails)=>{
-    // console.log(betDetails);
     return{
         type: "CHECK_MATCH",
         payload: betDetails
@@ -117,11 +105,3 @@ export const clearSelectedMatches = ()=>{
         type: "REMOVE_MATCHES"
     }
 }
-// export const deactivateMatch = (match_id)=> async (dispatch, getState)=>{
-//     // console.log("Postsss", response.data)
-//     let leagues = response.data.data.filter(league=> league.group.includes('Soccer'))
-//     dispatch({
-//         type: "DEACTIVATE_MATCH",
-//         payload: match_id
-//     })
-// }

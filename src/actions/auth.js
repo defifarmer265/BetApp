@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { fetchBets } from "./index";
+import { convertObjectToArray } from "../utils/utils";
 const KEY = 'AIzaSyB7dKEaTf00MBiwAlkx9R5tjIhr9txA_2E'
 
 export const signUp = (user)=> async (dispatch, getState)=>{
@@ -40,7 +40,11 @@ export const signIn = (user)=> async (dispatch, getState)=>{
         type: "BET_AMOUNT",
         payload: betAmount.data.betAmount
     })
-    fetchBets(response.data.localId)
+    const {data} = await axios.get(`https://betapp-54dbf.firebaseio.com/betlist/${response.data.localId}.json`)
+    dispatch({
+        type: "FETCH_BETS",
+        payload: convertObjectToArray(data)
+    })
     localStorage.setItem("refresh", response.data.refreshToken)
     dispatch({
         type: "SIGN_IN",
@@ -79,7 +83,7 @@ export const refreshToken = (user)=> async (dispatch, getState)=>{
                 payload: betAmount.data.betAmount
             })
             dispatch({
-                type: "SIGN_UP",
+                type: "SIGN_IN",
                 payload: {
                     idToken: data.id_token,
                     refreshToken: data.refresh_token,
@@ -108,11 +112,15 @@ export const refreshToken = (user)=> async (dispatch, getState)=>{
     }
 }
 
-export const signOut = ()=>{
+export const signOut = ()=> (dispatch, getState)=>{
     localStorage.removeItem("refresh")
-        return{
+    dispatch({
         type: "SIGN_OUT"
-    }    
+    })
+    dispatch({
+        type: "FETCH_BETS",
+        payload: []
+    })
 }
 
 export const makePayment = (user)=> async (dispatch, getState)=>{

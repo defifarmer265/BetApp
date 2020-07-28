@@ -197,7 +197,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                     
                     <button className={`uk-button uk-button-default uk-button-small header__button ${(!errors.email && !errors.password && (touched["email"] || touched["password"])) ? 'active' : ''}`} type="submit">Log in</button>
                 </form>
-                <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>showCurrentComp('userForm', true)}>Register</button>
+                <button className="uk-button uk-button-default uk-button-small header__register" onClick={()=>showCurrentComp('userForm', true)}>Register</button>
                 <div className="facebook">
                     <Facebook />
                 </div>
@@ -206,7 +206,7 @@ export const Header = ({signIn, authUser, betAmount, signOut}) => {
                     <div className="search uk-margin-remove-right">
                      <Search /> 
                     </div>
-                    <button class="uk-button uk-button-default uk-button-small header__register" onClick={()=>showCurrentComp('userForm', true)}>Register/Login</button>                    
+                    <button className="uk-button uk-button-default uk-button-small header__register" onClick={()=>showCurrentComp('userForm', true)}>Register/Login</button>                    
                 </div>
                 </>
                 }
