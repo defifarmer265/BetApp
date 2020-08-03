@@ -3,17 +3,10 @@ import axios from 'axios'
 import { convertObjectToArray } from "../utils/utils";
 const KEY ='2c61ef4e8abf276a676863b868ccc621'
 const resolveAwayTeam=(match)=>{
-    // if(match.teams[0] !== match.home_team){
-    //     return match.teams[0]             
-    // }
-    // else if(match.teams[0] === match.home_team){
-    //     return match.teams[1]
-    // }
     return match.teams.filter(team => team !== match.home_team)[0]
 }
 export const fetchMatches = (league)=> async (dispatch, getState)=>{
     const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${KEY}&region=uk&mkt=h2h&sport=${league}`)
-    // console.log("Postsss", response.data)
     let matches = response.data.data
     for(let i=0; i<matches.length; i++){
         matches[i].match_id = `${matches[i].teams.join('').replace(/\s/g, '')}${matches[i].commence_time}`
@@ -50,7 +43,7 @@ export const fetchLeagueMatches = (league)=> async (dispatch, getState)=>{
     const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${KEY}&region=uk&mkt=h2h&sport=${league}`)
     let matches = response.data.data
     for(let i=0; i<matches.length; i++){
-        matches[i].match_id = matches[i].teams.join('').replace(/\s/g, '')
+        matches[i].match_id = `${matches[i].teams.join('').replace(/\s/g, '')}${matches[i].commence_time}`
         matches[i].away_team = resolveAwayTeam(matches[i])
 
     }

@@ -27,7 +27,6 @@ const BetMatch=(props)=>{
         }
         const checkSelected = (market)=>{
             const foundSelected = props.selectedMatches.find(match=> match.match_id === props.match.match_id)
-            // console.log(foundSelected)
             if(foundSelected && market === foundSelected.market){
                 return 'matchSelected'
             }
