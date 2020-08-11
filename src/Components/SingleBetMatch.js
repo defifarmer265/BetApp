@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { shortenText, months_names } from "../utils/utils";
 
 export const SingleBetMatch = ({bet}) => {
     const [viewLength, setViewLength] = useState(4)
+    const [shortenTextLen, setShortenTextLen] = useState(21)
+    
+    useEffect(()=>{
+        var matchedMedia = window.matchMedia("(max-width: 673px)")
+            if(matchedMedia.matches){
+                setShortenTextLen(35)
+            }
+    }, [])
+    
     const  date = new Date(bet.time)
     const showViewMore = ()=>{
         if(bet.selectedMatches.length > 4){
@@ -25,7 +34,7 @@ export const SingleBetMatch = ({bet}) => {
                 </div>
                 <div className="cashout__match-selections">
                     {bet.selectedMatches.map((match, index)=>(index < viewLength ?
-                        <><span title={`${match.home_team} v ${match.away_team}`}>{shortenText(`${match.home_team} v ${match.away_team}`, 0, 21)} <span className="market">{match.market}</span></span> <br /></> : ''
+                        <React.Fragment key={match.match_id}><span key={match.match_id} title={`${match.home_team} v ${match.away_team}`}>{shortenText(`${match.home_team} v ${match.away_team}`, 0, shortenTextLen)} <span className="market">{match.market}</span></span> <br /></React.Fragment> : ''
                     ))}
                 </div>               
                 

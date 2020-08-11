@@ -12,7 +12,7 @@ const Cashout=({authUser, fetchBets, placedBets})=>{
     const renderBets = ()=>{
         if(placedBets.length > 0){
           return placedBets.map((bet)=>(
-            <div className="cashout__matches">
+            <div key={bet.betId} className="cashout__matches">
                 
                 <div className="cashout__state">
                     <span>Multiple</span> <div className="status"><span>PENDING</span><Arrow /></div>
