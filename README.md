@@ -1,4 +1,4 @@
-# BettApp
+# BetApp
 
 > A React app for placing bets on football matches with live odds.
 
