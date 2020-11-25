@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BettApp
+
+> A React app for placing bets on football matches with live odds.
 
 ## Available Scripts
 
