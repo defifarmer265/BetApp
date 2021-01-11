@@ -9,9 +9,7 @@ import {ReactComponent as LoadIcon} from '../icons/money-bag.svg'
 class MainView extends React.Component{
     state={leaguesLoaded: false}
     async componentDidMount(){
-        // console.log(this.props.posts)
         await this.props.fetchLeagueMatches(this.props.match.params.league)
-        // console.log("fetched")
     }
     componentDidUpdate(prevProps){
         if(prevProps.match.params.league !== this.props.match.params.league){
@@ -40,17 +38,12 @@ class MainView extends React.Component{
                             <Refresh />
                         </div>
                     </div>
-                    
-                    {/* <ul className="uk-tab">
-                        <li className="uk-active"><a href="#">Left</a></li>
-                        <li><a href="#">Item</a></li>
-                        <li><a href="#">Item</a></li>
-                    </ul> */}
-                    {this.props.matches.length > 0 ? (<div className="mainview__matches">
+                    {
+                    this.props.matches.length > 0 ? (<div className="mainview__matches">
                         <BetGroup matches={this.props.matches}/>
                     </div>)
-                    : <p style={{textAlign: 'center'}}>No matches</p>}
-                    
+                    : <p style={{textAlign: 'center'}}>No matches</p>
+                    }                    
                 </div>
                 )
             }

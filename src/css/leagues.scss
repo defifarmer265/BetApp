@@ -66,11 +66,18 @@
 
 .loaders {
   // background-color: #0f0;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   span {
-    background-color: #f00;
-    // display: ;
     text-align: center;
   }
+}
+
+.table-loader {
+  span {
+    width: 100% !important;
+  }
+}
+
+.react-loading-skeleton {
+  border-radius: 0 !important;
 }

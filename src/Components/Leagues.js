@@ -5,6 +5,7 @@ import {ReactComponent as Star} from '../icons/star.svg'
 import {fetchLeagues} from '../actions'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
+import ListLoader from './Loaders/ListLoader'
 
 class Leagues extends React.Component{
     appendClass(id){
@@ -36,14 +37,10 @@ class Leagues extends React.Component{
                     {
                         this.props.leagues.length > 0 ? this.renderLeagues() : (
                             <div className="loaders">
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-                                <BulletList backgroundColor={'#d1d1d1'} foregroundColor={'#eaeaea'} />
-
+                               {
+                                   new Array(25).fill(null)
+                                   .map(e => <ListLoader />)
+                               }
                             </div>
                         )
                     }                   
