@@ -1,66 +1,76 @@
-@import './utils/variables';
-@import './utils/mixins';
-.leagues{
-    background-color: #fff !important;
-    // min-height: 100vh;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0);
-    border: 1px solid #B4B4B4;
-    // @include respond-tablet {
-    //     display: none;
-    // }
-    .list-group{
-        // margin: 0;
-        // padding: 0;
-        margin-bottom: 0 !important;
-        border-radius: 0;
-        &-item{
-            // list-style: none;
-            // padding: 0;
-            margin-top: 0 !important;
-            position: relative;
-            color: $font-color;
-            background-color: #fff;
-            text-align: left;
-            padding: 7px 10px !important;
-            font-size: 15.2px;
-            border-color: $border-color;
-
-            svg{
-                fill: #fff;
-                stroke: $font-color;
-                stroke-width: 20px;
-                stroke-linejoin: miter-clip;
-                width: 15px;
-                height: 15px;
-                position: absolute;
-                right: 8px;
-                cursor: pointer;
-                // margin-left: 80px;
-                &.selected{
-                    fill: #ffdf1b;
-                    stroke-width: 0;
-                }
-            }
-
-            .league-link{
-                color: $font-color;
-
-                &:hover{
-                    text-decoration: none;
-                    font-weight: 400;
-                }
-            }
+@import "./utils/variables";
+@import "./utils/mixins";
+.leagues {
+  background-color: #fff !important;
+  // min-height: 100vh;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0);
+  border: 1px solid #b4b4b4;
+  // @include respond-tablet {
+  //     display: none;
+  // }
+  .list-group {
+    // margin: 0;
+    // padding: 0;
+    margin-bottom: 0 !important;
+    border-radius: 0;
+    &-item {
+      // list-style: none;
+      // padding: 0;
+      margin-top: 0 !important;
+      position: relative;
+      color: $font-color;
+      background-color: #fff;
+      text-align: left;
+      padding: 7px 10px !important;
+      font-size: 15.2px;
+      border-color: $border-color;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .league-star {
+        fill: #fff;
+        stroke: $font-color;
+        stroke-width: 20px;
+        stroke-linejoin: miter-clip;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          display: block;
+          stroke-width: 0;
+          width: 100%;
+          height: 100%;
+          fill: #ccc;
         }
+        &.selected {
+          svg {
+            fill: #ffdf1b !important;
+          }
+        }
+      }
+
+      .league-link {
+        color: $font-color;
+
+        &:hover {
+          text-decoration: none;
+          font-weight: 400;
+        }
+      }
     }
+  }
 }
 
-.loaders{
-    // background-color: #0f0;
-    padding-left: 10px;
-    padding-right: 10px;
-    span{
-        background-color: #f00;
-        // display: ;
-        text-align: center;
-    }
+.loaders {
+  // background-color: #0f0;
+  padding-left: 10px;
+  padding-right: 10px;
+  span {
+    background-color: #f00;
+    // display: ;
+    text-align: center;
+  }
 }

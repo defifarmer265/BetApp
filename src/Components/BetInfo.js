@@ -7,9 +7,6 @@ import '../css/betInfo.scss'
 
 class BetInfo extends React.Component{
     state={currentComp: 'betslip'}
-    componentDidMount(){
-        // console.log(Formik)
-    }
     
         checkCurrenturrentComp(comp){
             return this.state.currentComp === comp ? 'active' : ''

@@ -27,16 +27,15 @@ renderMatches(){
             <td colSpan="2" className="match_date">{`${date.getDate().toString().length===1 ? '0'+date.getDate() : date.getDate()}/${date.getMonth().toString().length===1 ? '0'+(date.getMonth()+1) : date.getMonth()}
             ${date.toLocaleString("default", { weekday: "long" })}`}</td>
         </tr>    
-    )
-    }
+    )}
     this.props.matches.filter(match=> match.commence_time === el)
     .forEach((match, index, arr)=>{
         els.push(
         <BetMatch key={match.match_id} match={match} />
         )
-    } )
+    })
     previous = `${new Date(el * 1000).getMonth()}/${new Date(el * 1000).getDate()}`
-})
+    })
 return els;
 }
 render(){

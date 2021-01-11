@@ -1,332 +1,325 @@
-@import './utils/variables';
-@import './utils/mixins';
-@import './utils/animations';
-.app{
-    // background-color: $bg-main;
-    background-color: #eaecef;
-    min-height: 100vh;
-    width: 100%;
-    @include respond-before-phone {
-        margin-bottom: 50px;
-        background-color: #fff;
-    }
-    .loadScreen{
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 100vh;
-        background-color: #eaecef;
-        z-index: 9999999999999999999;
-        display: grid;
-        place-items: center;
-        svg{
-            width: 50px;
-            height: 50px;
-            display: block;
-            animation: 1.5s app-load linear forwards infinite;
-        }
-    }
-
-    .footer{
-        background-color: #1B1E25;
-        width: 100%;
-        height: 65px;
-        margin-top: 20px;
-        margin-bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        box-sizing: border-box;
-        color: #fff;
-        @include respond-before-phone {
-            display: none;
-        }
-        .owner{
-            display: flex;
-            h3{
-                color: #fff;
-                font-size: 14px;
-                margin-bottom: 5px;
-            }
-            .socials{
-
-                svg{
-                    width: 23px;
-                    height: 23px;
-                    display: block;
-                    margin-left: 5px;
-                }
-            }
-        }
-    }
-
-}
-.error{
-    color: #7B0911;
-    font-size: 13px;
-    display: block;
-}
-.circle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    font-size: 16px !important;
-    color: #000;
-    margin-left: -9px;
-    border-radius: 100px;
-    background-color: rgba(234, 236, 239, 0.15);
-    span{
-        display: block;
-        color: red;
-        font-size: 15.5px;
-    }
-}
-.main-content{
-    max-width: 1100px;
-    margin: 0 auto;
-    min-height: 85vh;
-    
-    background-color: #eaecef;
-    display: grid;
-    grid-template-columns: 2fr 5fr minmax(275px, 2fr);
-    @include respond-tablet {
-        grid-template-columns: 5fr minmax(275px, 2fr);
-    }
-    @include respond-before-phone {
-        grid-template-columns: 1fr;
-        background-color: #fff;
-    }
-    @include respond-phone {
-        grid-template-columns: 1fr;
-        margin-top: -20px;
-        
-    }
-        &__center{
-            // flex-grow: 1;
-            width: 100%;
-        }
-    &__left{
-        flex-grow: 200px;
-        margin-right: 20px;
-        @include respond-tablet {
-            display: none;
-        }
-        @include respond-before-phone {
-            display: none;
-        }
-    }
-    &__right{
-        margin-left: 20px;
-        flex-grow: 280px;
-        min-height: 300px !important;
-        background-color: #eaecef;
-        // @include respond-tablet {
-        //     display: none;
-        // }
-        @include respond-before-phone {
-            display: none;
-        }
-    }
-}
-.main{
-    background-color: #ff0;
-}
-
-@import './utils/variables';
-.betinfo{
-    min-height: 100%;
+@import "./utils/variables";
+@import "./utils/mixins";
+@import "./utils/animations";
+.app {
+  // background-color: $bg-main;
+  background-color: #eaecef;
+  min-height: 100vh;
+  width: 100%;
+  @include respond-before-phone {
+    margin-bottom: 50px;
     background-color: #fff;
-    border: 5px solid #353a45;
-    // background-color: #fff;
-    &__body{
-        margin: 0 10px;
+  }
+  .loadScreen {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    background-color: #eaecef;
+    z-index: 9999999999999999999;
+    display: grid;
+    place-items: center;
+    svg {
+      width: 50px;
+      height: 50px;
+      display: block;
+      animation: 1.5s app-load linear forwards infinite;
     }
-        &__option{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-items: center;
-            text-align: center;
-            color: #fff;
-            background-color: #353a45;
-            padding-top: 15px;
-            padding-bottom: 8px;
-    
-            &-betslip,
-            &-cashout{
-                width: 80%;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                place-items: center;
-                padding-bottom: 5px;
-                cursor: pointer;
-                &.active{
-                    border-bottom: 3px solid $odd-color;
-                }
-                .circle{
-                    display: block;
-                    width: 24px;
-                    height: 24px;
-                    color: #fff;
-                    font-size: 15px;
-                    margin-left: -9px;
-                    border-radius: 45px;
-                    background-color: rgba(234, 236, 239, 0.15);
-                }
-            }
-            &-betslip{
-    
-            }
-            &-cashout{
-    
-            }
-        }
-        &__body{
-            
-            border-top: none;
-        }
-        &__remove{
-            width: 100%;
-            margin: 10px 0;
-            span{
-                cursor: pointer;
-                font-size: 12px;
-                display: block;
-                width: 70px;
-                box-sizing: border-box;
-                margin-left: auto;
-                border: 1px solid #EAECEF;
-                border-radius: 2px;
-                padding: 2px 4px;
-                color: #3656A3;
-                // height: 24px;
-            }
-        }
-    & .betInfo{
-        display: flex;
-        // align-items: stretch;
-        justify-content: flex-start;
-        max-height: 100px;
-        
-        
-        // margin-bottom: 7px;
-        
+  }
 
-        &__selected{
-            padding: 7px 0 0;
-            &-box{
-                // width: 14px;
-                // height: 14px;
-                // border: 1px solid #d8d8d8;
-                input{
-
-                    &:checked{
-                        background-color: $odd-color;
-                    }
-                }
-            }
-        }
-
-        &__main{
-            // height: 100px !important;
-            margin-left: 10px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-top: 1px solid #EAECEF;
-            padding: 7px 0 0;
-            &-top{
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
-                font-size: 13px;
-                // height: 30px !important;
-                svg{
-                    width: 15px;
-                    height: 15px;
-                    margin-right: 4px;
-                }
-                .market{
-                    margin: 0;
-                }
-            }
-        }
-
-        &__action{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-top: 1px solid #EAECEF;
-            padding: 7px 0 0;
-            &-cancel{
-                cursor: pointer;
-                svg{
-                    fill: #353A45;
-                }
-            }
-            &-odd{
-                font-weight: 600;
-            }
-        }
+  .footer {
+    background-color: #1b1e25;
+    width: 100%;
+    height: 65px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    color: #fff;
+    @include respond-before-phone {
+      display: none;
     }
-    
+    .owner {
+      display: flex;
+      h3 {
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .socials {
+        svg {
+          width: 23px;
+          height: 23px;
+          display: block;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+.error {
+  color: #7b0911;
+  font-size: 13px;
+  display: block;
+}
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 16px !important;
+  color: #000;
+  margin-left: -9px;
+  border-radius: 100px;
+  background-color: rgba(234, 236, 239, 0.15);
+  span {
+    display: block;
+    color: red;
+    font-size: 15.5px;
+  }
+}
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-height: 85vh;
+
+  background-color: #eaecef;
+  display: grid;
+  grid-template-columns: 2fr 5fr minmax(275px, 2fr);
+  @include respond-tablet {
+    grid-template-columns: 5fr minmax(275px, 2fr);
+  }
+  @include respond-before-phone {
+    grid-template-columns: 1fr;
+    background-color: #fff;
+  }
+  @include respond-phone {
+    grid-template-columns: 1fr;
+    margin-top: -20px;
+  }
+  &__center {
+    // flex-grow: 1;
+    width: 100%;
+  }
+  &__left {
+    flex-grow: 200px;
+    margin-right: 20px;
+    @include respond-tablet {
+      display: none;
+    }
+    @include respond-before-phone {
+      display: none;
+    }
+  }
+  &__right {
+    margin-left: 20px;
+    flex-grow: 280px;
+    min-height: 300px !important;
+    background-color: #eaecef;
+    // @include respond-tablet {
+    //     display: none;
+    // }
+    @include respond-before-phone {
+      display: none;
+    }
+  }
+}
+.main {
+  background-color: #ff0;
 }
 
-.book-bet{
-    padding: 10px;
-    &__info, &__detail{
-        font-size: 14px;
-        margin-bottom: 0;
-    }
-    &__detail{
-        color: #DCDEE5
-    }
-    select{
-        border: .1px solid #0D9737;
-        option::selection{
-            background-color: #f00;
-        }
-    }
-    input{
-        text-transform: uppercase !important;
-        &:focus{
-            border: .1px solid #0D9737;
-        }
-        &::placeholder{
-            text-transform: unset !important;
-            font-size: 14px !important;
-        }
-    }
-    button{
+@import "./utils/variables";
+.betinfo {
+  min-height: 100%;
+  background-color: #fff;
+  border: 5px solid #353a45;
+  // background-color: #fff;
+  &__body {
+    margin: 0 10px;
+  }
+  &__option {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    text-align: center;
+    color: #fff;
+    background-color: #353a45;
+    padding-top: 15px;
+    padding-bottom: 8px;
 
+    &-betslip,
+    &-cashout {
+      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      padding-bottom: 5px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 3px solid $odd-color;
+      }
+      .circle {
+        display: block;
+        width: 24px;
+        height: 24px;
+        color: #fff;
+        font-size: 15px;
+        margin-left: -9px;
+        border-radius: 45px;
+        background-color: rgba(234, 236, 239, 0.15);
+      }
     }
-    .inactive{
-        background-color: #dcdee5;
-        color: #9CA0AB;
-        border: none;
-        &:hover{
-            border: none;
-            cursor: not-allowed
+    &-betslip {
+    }
+    &-cashout {
+    }
+  }
+  &__body {
+    border-top: none;
+  }
+  &__remove {
+    width: 100%;
+    margin: 10px 0;
+    span {
+      cursor: pointer;
+      font-size: 12px;
+      display: block;
+      width: 70px;
+      box-sizing: border-box;
+      margin-left: auto;
+      border: 1px solid #eaecef;
+      border-radius: 2px;
+      padding: 2px 4px;
+      color: #3656a3;
+      // height: 24px;
+    }
+  }
+  & .betInfo {
+    display: flex;
+    // align-items: stretch;
+    justify-content: flex-start;
+    max-height: 100px;
+
+    // margin-bottom: 7px;
+
+    &__selected {
+      padding: 7px 0 0;
+      &-box {
+        // width: 14px;
+        // height: 14px;
+        // border: 1px solid #d8d8d8;
+        input {
+          &:checked {
+            background-color: $odd-color;
+          }
         }
+      }
     }
-    .active{
-        background-color: $odd-color;
-        color: $font-color;
+
+    &__main {
+      // height: 100px !important;
+      margin-left: 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 1px solid #eaecef;
+      padding: 7px 0 0;
+      &-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 13px;
+        // height: 30px !important;
+        svg {
+          width: 15px;
+          height: 15px;
+          margin-right: 4px;
+        }
+        .market {
+          margin: 0;
+        }
+      }
+    }
+
+    &__action {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid #eaecef;
+      padding: 7px 0 0;
+      &-cancel {
         cursor: pointer;
-        &:hover{
-            background-color: $button-hover;
+        svg {
+          fill: #353a45;
         }
+      }
+      &-odd {
+        font-weight: 600;
+      }
     }
-    input, select, button{
-        margin-top: 10px;
-        font-size: 14px;
-        text-transform: unset;
+  }
+}
+
+.book-bet {
+  padding: 10px;
+  &__info,
+  &__detail {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  &__detail {
+    color: #dcdee5;
+  }
+  select {
+    border: 0.1px solid #0d9737;
+    option::selection {
+      background-color: #f00;
     }
+  }
+  input {
+    text-transform: uppercase !important;
+    &:focus {
+      border: 0.1px solid #0d9737;
+    }
+    &::placeholder {
+      text-transform: unset !important;
+      font-size: 14px !important;
+    }
+  }
+  button {
+  }
+  .inactive {
+    background-color: #dcdee5;
+    color: #9ca0ab;
+    border: none;
+    &:hover {
+      border: none;
+      cursor: not-allowed;
+    }
+  }
+  .active {
+    background-color: $odd-color;
+    color: $font-color;
+    cursor: pointer;
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+  input,
+  select,
+  button {
+    margin-top: 10px;
+    font-size: 14px;
+    text-transform: unset;
+  }
 }

@@ -45,8 +45,6 @@ const BetAmount = (props)=>{
     const [bonus, setBonus] = useState(0)
     const [potentialWin, setPotentialWin] = useState(0)
       const setAmount = (amount)=>{
-        //   console.log(amount)
-        // formik.values.betAmount = amount
         setFieldValue("betAmount", amount)
       }
     const calcTotalOdd = ()=>{
@@ -57,29 +55,15 @@ const BetAmount = (props)=>{
             (acc, item)=> acc * Number(parseFloat(item.marketOdd)), 1
         )
         setTotalOdd(filteredMatches.length === 0 ? 0 : combinedOdd)
-        // console.log(`From Calc Odd---Total Odd: ${totalOdd} 
-        // Bet Amount: ${formik.values.betAmount}
-        // Potential Win: ${potentialWin}
-        // Bonus: ${bonus}`)
     }
 
     const calcWinning = ()=>{        
         setPotentialWin(totalOdd*values.betAmount)
-        // console.log(`From calcWin---Total Odd: ${totalOdd} 
-        // Bet Amount: ${formik.values.betAmount}
-        // Potential Win: ${potentialWin}
-        // Bonus: ${bonus}`)
     }
     
     const calcBonus = ()=>{
-        // console.log("The betamount from bonus is:"+this.state.betAmount)
         setBonus(0.4*potentialWin) 
-        // console.log(`lmaooo bonus calculated, and the current potential win is: ${potentialWin}`)
     }
-
-    // const checkAmountError = (comp)=>{
-    //     return formik.values.betAmount < 100 ? 'uk-form-danger' : ''
-    // }
 
     const showBetInfo = (betType, modalState)=>{
         setBetType(betType)
@@ -121,7 +105,6 @@ const BetAmount = (props)=>{
         calcWinning()
         calcBonus()
         return()=>{
-            // console.log("sec func")
             if(props.selectedMatches.length === 0){
                 setTotalOdd(0)
                 values.betAmount = 0
@@ -152,12 +135,6 @@ const BetAmount = (props)=>{
                         <span className="invalid-feedback">
                             {props.authUser && (touched["betAmount"] && errors["betAmount"])}
                         </span>
-                        {/* {formik.errors.betAmount ? <div className="invalid-feedback">{formik.errors.betAmount}</div> : null} */}
-                        {/* <ErrorMessage
-                    component="div"
-                    name="betAmount"
-                    className="invalid-feedback"
-                    /> */}
                     </div>
                 </div>
                 {/* {this.state.betAmount} */}
@@ -171,9 +148,6 @@ const BetAmount = (props)=>{
                 <div className="betAmount__details-bonus">
                     <small className="info">Odds</small>
                     <h3 className="content">
-                        {/* {
-                         this.calcTotalOdd() === 1 ? 0 :this.calcTotalOdd().toFixed(2) || 0 
-                        } */}
                         {totalOdd.toFixed(2)}
                     </h3>
                 </div>
@@ -221,5 +195,3 @@ const mapStateToProps =(state)=>{
             }
 }
 export default connect(mapStateToProps, {fetchBets, updateBetAmount})(BetAmount)
-//db-url: https://betapp-54dbf.firebaseio.com
-//auth-url: https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]

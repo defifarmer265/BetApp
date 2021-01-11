@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import'../css/mainView.scss'; 
 import {fetchLeagueMatches} from '../actions'
-import BetGroup from './BetGroup'
+import BetGroup from '../Components/BetGroup'
 import {ReactComponent as Refresh} from '../icons/refresh.svg'
 import {ReactComponent as LoadIcon} from '../icons/money-bag.svg' 
 

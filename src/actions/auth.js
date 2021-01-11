@@ -62,21 +62,14 @@ export const refreshToken = (user)=> async (dispatch, getState)=>{
     try{
         const refreshToken = localStorage.getItem("refresh")
         if(refreshToken){
-            //https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=[API_KEY]
-            
-            //get a new token
             const {data} = await axios.post(`https://securetoken.googleapis.com/v1/token?key=${KEY}`, {
                 grant_type: "refresh_token",
                 refresh_token: refreshToken
         })
-        // console.log(data)
-        //getCurrentUser
         const currentUser = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${KEY}`, {
             idToken: data.id_token
         })
-        // console.log("The current User", currentUser)
         const betAmount = await axios.get(`https://betapp-54dbf.firebaseio.com/balance/${currentUser.data.users[0].localId}.json`)
-        // console.log("The returned betAmount is: ", betAmount)
             localStorage.setItem("refresh", data.refresh_token)
             dispatch({
                 type: "BET_AMOUNT",

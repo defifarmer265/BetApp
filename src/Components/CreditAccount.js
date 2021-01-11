@@ -6,8 +6,6 @@ import { PaystackButton } from 'react-paystack'
 import '../css/creditAccount.scss'
 import {updateBetAmount} from '../actions/auth'
 
-const PAYSTACK_PUBLIC_KEY = 'pk_test_98fd65341f193151b11213ad43bd7e8504dcbfc8'
-
 const CreditAccount = (props)=> {
     const {
         values,
@@ -39,7 +37,7 @@ const CreditAccount = (props)=> {
       const componentProps = {
         email: props.authUser.email,
         amount: values.credit*100,
-        publicKey: PAYSTACK_PUBLIC_KEY,
+        publicKey:  process.env.REACT_APP_PAYSTACK_TEST_KEY,
         text: "Credit Account",
         onSuccess: () =>{
             props.updateBetAmount(props.betAmount+values.credit)

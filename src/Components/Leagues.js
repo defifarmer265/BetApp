@@ -7,28 +7,26 @@ import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 
 class Leagues extends React.Component{
-    // const leagues = ['Man Utd', 'Chelsea', 'Liverpool', 'Everton', 'Sansiro']
-    // const renderLeagues = return leagues.map(league=> <li>
-    //         league
-    //     </li>)
-    lops(id){
-        document.getElementById(`${id}`).classList.toggle("selected")
+    appendClass(id){
+        document.querySelector(`#${id}`).classList.add("paka")
     }
     renderLeagues(){
-        return this.props.leagues.map(league=> <li className="list-group-item" key={league.key}>
-                                                    <NavLink
-                                                    className="league-link"
-                                                    activeStyle={{
-                                                        fontWeight: "700",
-                                                      }}
-                                                      onClick={()=>this.props.leagueClicked()}
-                                                     to={`/league/${league.key}`}>
-                                                        {league.title}
-                                                    </NavLink> <Star id={league.key} onClick={()=>this.lops(league.key)} />
-                                                </li>)
-        }
-        componentDidMount(){
-            // this.props.fetchLeagues()
+        return this.props.leagues.map(league=> 
+                (<li className="list-group-item" key={league.key}>
+                <NavLink
+                className="league-link"
+                activeStyle={{
+                fontWeight: "700",
+                }}
+                onClick={()=>this.props.leagueClicked()}
+                to={`/league/${league.key}`}>
+                {league.title}
+                </NavLink>
+                <div onClick={()=>this.appendClass(league.key)} id={league.key} className="league-star">
+                    <Star />
+                </div>                
+                </li>)
+            )
         }
         render(){
             // console.log(this.props.leagues)
@@ -56,7 +54,6 @@ class Leagues extends React.Component{
     }
     }
 const mapStateToProps =(state)=>{
-    // console.log("moprps", state.posts)
     return {leagues: state.leagues}
 }
 export default connect(mapStateToProps, {fetchLeagues})(Leagues)
