@@ -12,8 +12,7 @@ class MainView extends React.Component{
                 <div className="latest">
                     <span className="circle"></span>
                     <h2>Upcoming Matches</h2>
-                </div>
-                
+                </div>                 
                 <div className="refresh">
                     <span>Refresh</span>
                     <Refresh />
