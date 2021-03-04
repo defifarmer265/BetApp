@@ -1,5 +1,4 @@
 import React from 'react'
-import {BulletList} from 'react-content-loader'
 import '../assets/css/leagues.scss'
 import {ReactComponent as Star} from '../assets/icons/star.svg'
 import {fetchLeagues} from '../store/actions'
@@ -37,8 +36,8 @@ const Leagues = props => {
           renderLeagues()
         ) : (
           <div className="loaders">
-            {new Array(27).fill(null).map(e => (
-              <ListLoader />
+            {new Array(27).fill(null).map((e, index) => (
+              <ListLoader key={index} />
             ))}
           </div>
         )}

@@ -4,7 +4,7 @@ import '../assets/css/mainView.scss'
 import {fetchMatches} from '../store/actions'
 import BetGroup from '../Components/BetGroup'
 import {ReactComponent as Refresh} from '../assets/icons/refresh.svg'
-const MainView = () => {
+const MainView = props => {
   return (
     <div className="mainview">
       <div className="mainview__top">
@@ -18,7 +18,7 @@ const MainView = () => {
         </div>
       </div>
       <div className="mainview__matches">
-        <BetGroup matches={this.props.matches} />
+        <BetGroup matches={props.matches} />
       </div>
     </div>
   )
