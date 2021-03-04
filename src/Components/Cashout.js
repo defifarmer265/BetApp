@@ -1,14 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import '../css/cashout.scss'
-import {ReactComponent as Arrow} from '../icons/arrow.svg'
+import '../assets/css/cashout.scss'
+import {ReactComponent as Arrow} from '../assets/icons/arrow.svg'
 import SingleBetMatch from './SingleBetMatch'
-const Cashout = ({authUser, fetchBets, placedBets}) => {
-  // useEffect(()=>{
-  //     if(authUser){
-  //        fetchBets(authUser.localId)
-  //     }
-  // }, [authUser, fetchBets])
+const Cashout = ({authUser, placedBets}) => {
   const renderBets = () => {
     if (placedBets.length > 0) {
       return placedBets.map(bet => (
@@ -48,7 +43,6 @@ const Cashout = ({authUser, fetchBets, placedBets}) => {
 }
 
 const mapStateToProps = state => {
-  // console.log("moprps", state.posts)
   return {
     authUser: state.authUser,
     placedBets: state.placedBets

@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import '../css/betAmount.scss'
+import '../assets/css/betAmount.scss'
 import {useFormik} from 'formik'
 import BetPlaced from './BetPlaced'
-import {ReactComponent as Cancel} from '../icons/cancel.svg'
+import {ReactComponent as Cancel} from '../assets/icons/cancel.svg'
 import Modal from './Modal'
-import {fetchBets} from '../actions'
-import {updateBetAmount} from '../actions/auth'
+import {fetchBets} from '../store/actions'
+import {updateBetAmount} from '../store/actions/auth'
 import * as Yup from 'yup'
 
 const BetAmount = props => {

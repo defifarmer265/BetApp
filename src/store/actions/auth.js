@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {convertObjectToArray} from '../utils/utils'
+import {convertObjectToArray} from '../../utils/utils'
 const KEY = 'AIzaSyB7dKEaTf00MBiwAlkx9R5tjIhr9txA_2E'
 
 export const signUp = user => async (dispatch, getState) => {

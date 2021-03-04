@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import * as Yup from 'yup'
-import '../css/modal.scss'
+import '../assets/css/modal.scss'
 import {useFormik} from 'formik'
-import {signUp, signIn} from '../actions/auth'
+import {signUp, signIn} from '../store/actions/auth'
 const Register = ({signUp, onRegistered, currentComp, signIn}) => {
   //  console.log(currentComp)
   const [error, setError] = useState('')

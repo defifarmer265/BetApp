@@ -1,14 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Leagues from './Leagues'
-import '../css/sidebar.scss'
-import {ReactComponent as Cancel} from '../icons/cancel.svg'
-import {ReactComponent as Home} from '../icons/home.svg'
-import {ReactComponent as Search} from '../icons/search.svg'
-import {ReactComponent as Live} from '../icons/live.svg'
-import {ReactComponent as Jackpot} from '../icons/jackpot.svg'
-import {ReactComponent as Livescore} from '../icons/livescore.svg'
-import {ReactComponent as Virtual} from '../icons/virtual.svg'
+import '../assets/css/sidebar.scss'
+import {ReactComponent as Cancel} from '../assets/icons/cancel.svg'
+import {ReactComponent as Home} from '../assets/icons/home.svg'
+import {ReactComponent as Search} from '../assets/icons/search.svg'
+import {ReactComponent as Live} from '../assets/icons/live.svg'
+import {ReactComponent as Jackpot} from '../assets/icons/jackpot.svg'
+import {ReactComponent as Livescore} from '../assets/icons/livescore.svg'
+import {ReactComponent as Virtual} from '../assets/icons/virtual.svg'
 function Sidebar({isOpen, closeModal}) {
   const renderSidebar = () => {
     return (

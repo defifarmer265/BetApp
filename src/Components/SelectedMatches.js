@@ -1,31 +1,31 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {selectMatch, clearSelectedMatches, removeMatch, checkMatch} from '../actions'
+import {selectMatch, clearSelectedMatches, removeMatch, checkMatch} from '../store/actions'
 import BetAmount from './BetAmount'
-import {ReactComponent as Football} from '../icons/footbal.svg'
-import {ReactComponent as Cancel} from '../icons/cancel.svg'
+import {ReactComponent as Football} from '../assets/icons/footbal.svg'
+import {ReactComponent as Cancel} from '../assets/icons/cancel.svg'
 import {shortenText} from '../utils/utils'
-export class SelectedMatches extends Component {
-  renderBody() {
+export const SelectedMatches = props => {
+  const renderBody = () => {
     return (
       <div className="betinfo__body">
         <div className="betinfo__remove">
-          <span onClick={() => this.props.clearSelectedMatches()}>Remove All</span>
+          <span onClick={() => props.clearSelectedMatches()}>Remove All</span>
         </div>
-        {this.renderselectedMatches()}
-        {this.props.selectedMatches.length > 0 ? <BetAmount /> : null}
+        {renderselectedMatches()}
+        {props.selectedMatches.length > 0 ? <BetAmount /> : null}
       </div>
     )
   }
-  renderselectedMatches() {
-    return this.props.selectedMatches.map(match => {
+  const renderselectedMatches = () => {
+    return props.selectedMatches.map(match => {
       return (
         <div key={match.match_id} className="betInfo">
           <div className="betInfo__selected">
             <div className="betInfo__selected-box">
               <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                 <label>
-                  <input className="uk-checkbox" name={match.match_id} type="checkbox" id={match.match_id} onChange={() => this.unCheck(match.match_id, match.checked)} checked={match.checked} />
+                  <input className="uk-checkbox" name={match.match_id} type="checkbox" id={match.match_id} onChange={() => unCheck(match.match_id, match.checked)} checked={match.checked} />
                 </label>
               </div>
             </div>
@@ -49,7 +49,7 @@ export class SelectedMatches extends Component {
             <div
               className="betInfo__action-cancel"
               onClick={() =>
-                this.props.removeMatch({
+                props.removeMatch({
                   match_id: match.match_id
                 })
               }
@@ -62,20 +62,17 @@ export class SelectedMatches extends Component {
       )
     })
   }
-  de
-  unCheck(match_id, match_checked) {
+  const unCheck = (match_id, match_checked) => {
     console.log(document.getElementById(match_id).checked)
 
     // document.getElementById(match_id).checked = document.getElementById(match_id).checked
-    this.props.checkMatch({
+    props.checkMatch({
       match_id,
       checked: !match_checked
       // checked: document.getElementById(match_id).checked
     })
   }
-  render() {
-    return <div>{this.renderBody()}</div>
-  }
+  return <div>{renderBody()}</div>
 }
 
 const mapStateToProps = state => ({

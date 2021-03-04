@@ -3,8 +3,8 @@ import * as Yup from 'yup'
 import {connect} from 'react-redux'
 import {useFormik} from 'formik'
 import {PaystackButton} from 'react-paystack'
-import '../css/creditAccount.scss'
-import {updateBetAmount} from '../actions/auth'
+import '../assets/css/creditAccount.scss'
+import {updateBetAmount} from '../store/actions/auth'
 
 const CreditAccount = props => {
   const {values, handleSubmit, getFieldProps, touched, errors} = useFormik({

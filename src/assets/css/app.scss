@@ -1,6 +1,65 @@
 @import './utils/variables';
 @import './utils/mixins';
 @import './utils/animations';
+@import './utils/variables';
+body {
+  font-family: 'mukta' !important;
+}
+.form-group {
+  width: 100%;
+  // display: inline-block;
+  // background: $input-background !important;
+  text-align: left;
+  border-radius: 6px;
+  // margin-bottom: 10px;
+  .holder {
+    width: 100%;
+    display: inline-block;
+  }
+  &.valid-input {
+    border: none;
+  }
+  &.invalid-input {
+    border: 1px solid red !important;
+  }
+  input {
+    padding: 15px 8px;
+    width: 173px;
+    background-color: $input-background;
+    // opacity: .2;
+    // border: 1.5px solid rgba(124, 89, 181, 0.6);
+    font-size: 14px;
+    // font-weight: 600;
+    color: #262626;
+    font-family: 'Mukta';
+    padding: 9px 0 7px 8px;
+    text-overflow: ellipsis;
+    border-radius: 3px;
+
+    &::placeholder {
+      font-family: 'Mukta';
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #a9a9a9;
+    }
+    &:focus {
+      font-size: 13.5px;
+      color: #262626;
+      border: 3.5px solid #f00;
+    }
+  }
+  label {
+    text-align: left;
+    display: block;
+    // color: $color-primary;
+    // font-weight: 600;
+    font-size: 1em;
+    width: 100%;
+    // background-color: #f00;
+    margin-bottom: 10px;
+  }
+}
+
 .app {
   // background-color: $bg-main;
   background-color: #eaecef;
@@ -102,6 +161,7 @@
     background-color: #fff;
   }
   @include respond-phone {
+    padding: 0;
     grid-template-columns: 1fr;
     margin-top: -20px;
   }

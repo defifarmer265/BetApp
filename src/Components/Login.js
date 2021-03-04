@@ -1,17 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {ReactComponent as Facebook} from '../icons/facebook.svg'
-import '../css/modal.scss'
-import {ErrorMessage, useFormik} from 'formik'
-import {signIn} from '../actions/auth'
+import {ReactComponent as Facebook} from '../assets/icons/facebook.svg'
+import '../assets/css/modal.scss'
+import {useFormik} from 'formik'
+import {signIn} from '../store/actions/auth'
 const Login = ({signIn, onLogin}) => {
   const formik = useFormik({
     initialValues: {
       email: '',
       password: ''
     },
-    async onSubmit(values) {
-      console.log('email: ' + formik.values.email)
+    async onSubmit() {
       await signIn({email: formik.values.email, password: formik.values.password})
       onLogin()
       //display errors, check if the api returns an error the use formik's error to display error

@@ -1,12 +1,12 @@
 // import oddsApi from '../apis/the-odds-api'
 import axios from 'axios'
-import {convertObjectToArray} from '../utils/utils'
-const KEY = '2c61ef4e8abf276a676863b868ccc621'
+import {convertObjectToArray} from '../../utils/utils'
+// const process.env.REACT_APP_ODDS_API_KEY = '2c61ef4e8abf276a676863b868ccc621'
 const resolveAwayTeam = match => {
   return match.teams.filter(team => team !== match.home_team)[0]
 }
 export const fetchMatches = league => async (dispatch, getState) => {
-  const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${KEY}&region=uk&mkt=h2h&sport=${league}`)
+  const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${process.env.REACT_APP_ODDS_API_KEY}&region=uk&mkt=h2h&sport=${league}`)
   let matches = response.data.data
   for (let i = 0; i < matches.length; i++) {
     matches[i].match_id = `${matches[i].teams.join('').replace(/\s/g, '')}${matches[i].commence_time}`
@@ -19,7 +19,7 @@ export const fetchMatches = league => async (dispatch, getState) => {
 }
 
 export const fetchLeagues = () => async (dispatch, getState) => {
-  const response = await axios.get(`https://api.the-odds-api.com/v3/sports/?apiKey=${KEY}`)
+  const response = await axios.get(`https://api.the-odds-api.com/v3/sports/?apiKey=${process.env.REACT_APP_ODDS_API_KEY}`)
   let leagues = response.data.data.filter(league => league.group.includes('Soccer'))
   dispatch({
     type: 'FETCH_LEAGUES',
@@ -40,7 +40,7 @@ export const fetchLeagueMatches = league => async (dispatch, getState) => {
     type: 'LEAGUES_MATCHES_FETCHED',
     payload: false
   })
-  const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${KEY}&region=uk&mkt=h2h&sport=${league}`)
+  const response = await axios.get(`https://api.the-odds-api.com/v3/odds/?apiKey=${process.env.REACT_APP_ODDS_API_KEY}&region=uk&mkt=h2h&sport=${league}`)
   let matches = response.data.data
   for (let i = 0; i < matches.length; i++) {
     matches[i].match_id = `${matches[i].teams.join('').replace(/\s/g, '')}${matches[i].commence_time}`

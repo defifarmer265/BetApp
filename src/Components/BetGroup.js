@@ -1,18 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchMatches} from '../actions'
+import {fetchMatches} from '../store/actions'
 import BetMatch from './BetMatch'
-import '../css/betGroup.scss'
-// import './'
-// import '../css/betGroup.scss'
-class BetInfo extends React.Component {
-  state = {matches: []}
-  componentDidMount() {
-    // console.log(this.props.matches)
-  }
-  renderMatches() {
+import '../assets/css/betGroup.scss'
+const BetInfo = props => {
+  const renderMatches = () => {
     let theDates = []
-    this.props.matches.forEach(val => theDates.push(val.commence_time))
+    props.matches.forEach(val => theDates.push(val.commence_time))
     let theUniques = []
     theUniques = [...new Set(theDates)]
     const els = []
@@ -30,7 +24,7 @@ class BetInfo extends React.Component {
           </tr>
         )
       }
-      this.props.matches
+      props.matches
         .filter(match => match.commence_time === el)
         .forEach((match, index, arr) => {
           els.push(<BetMatch key={match.match_id} match={match} />)
@@ -39,24 +33,22 @@ class BetInfo extends React.Component {
     })
     return els
   }
-  render() {
-    return (
-      <div className="betGroup">
-        <table className="">
-          <thead>
-            <tr>
-              <th className=""></th>
-              <th className="teams"></th>
-              <th className="">Home</th>
-              <th className="">Draw</th>
-              <th className="">Away</th>
-            </tr>
-          </thead>
-          <tbody>{this.renderMatches()}</tbody>
-        </table>
-      </div>
-    )
-  }
+  return (
+    <div className="betGroup">
+      <table className="">
+        <thead>
+          <tr>
+            <th className=""></th>
+            <th className="teams"></th>
+            <th className="">Home</th>
+            <th className="">Draw</th>
+            <th className="">Away</th>
+          </tr>
+        </thead>
+        <tbody>{renderMatches()}</tbody>
+      </table>
+    </div>
+  )
 }
 
 // const mapStateToProps =(state)=>{

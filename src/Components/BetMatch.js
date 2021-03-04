@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {selectMatch} from '../actions'
+import {selectMatch} from '../store/actions'
 import {shortenText} from '../utils/utils'
-import {ReactComponent as Stats} from '../icons/statistics.svg'
+import {ReactComponent as Stats} from '../assets/icons/statistics.svg'
 
 const BetMatch = props => {
   function selectMatch(market) {
