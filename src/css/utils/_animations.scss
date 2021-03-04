@@ -1,43 +1,44 @@
 @keyframes modalAnim {
-    0% {
-  opacity: 0;
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
   }
-  
+
   100% {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
   }
-  }
-  
-  @keyframes mobileBetsEnter {
-    0% {
-  transform: translateY(0)
-  }
-  
-  100% {
-    transform: translateY(0)
-  }
+}
+
+@keyframes mobileBetsEnter {
+  0% {
+    transform: translateY(0);
   }
 
-  @keyframes mobileBetsLeave {
-    0% {
-  transform: translateY(0)
-  }
-  
   100% {
-    transform: translateY(230px)
+    transform: translateY(0);
   }
+}
+
+@keyframes mobileBetsLeave {
+  0% {
+    transform: translateY(0);
   }
 
-  @keyframes app-load{
-    0%, 100% {
-  transform: scale(0.85)
+  100% {
+    transform: translateY(230px);
   }
-  
-   65%{
-    transform: scale(1.25)
+}
+
+@keyframes app-load {
+  0%,
+  100% {
+    transform: scale(0.85);
   }
+
+  65% {
+    transform: scale(1.25);
   }
+}

@@ -1,18 +1,17 @@
 @import './css/utils/variables';
-body{
-    font-family: 'mukta' !important;
+body {
+  font-family: 'mukta' !important;
 }
 .form-group {
-    width: 100%;
-    // display: inline-block;
-    // background: $input-background !important;
-    text-align: left;
-    border-radius: 6px;
-    // margin-bottom: 10px;
-  .holder{
+  width: 100%;
+  // display: inline-block;
+  // background: $input-background !important;
+  text-align: left;
+  border-radius: 6px;
+  // margin-bottom: 10px;
+  .holder {
     width: 100%;
     display: inline-block;
-
   }
   &.valid-input {
     border: none;
@@ -20,7 +19,7 @@ body{
   &.invalid-input {
     border: 1px solid red !important;
   }
-  input{
+  input {
     padding: 15px 8px;
     width: 173px;
     background-color: $input-background;
@@ -33,19 +32,18 @@ body{
     padding: 9px 0 7px 8px;
     text-overflow: ellipsis;
     border-radius: 3px;
-    
-    &::placeholder{
+
+    &::placeholder {
       font-family: 'Mukta';
       font-size: 12.5px;
       font-weight: 600;
-      color: #A9A9A9;
+      color: #a9a9a9;
     }
-    &:focus{
+    &:focus {
       font-size: 13.5px;
       color: #262626;
       border: 3.5px solid #f00;
     }
-
   }
   label {
     text-align: left;
@@ -57,5 +55,4 @@ body{
     // background-color: #f00;
     margin-bottom: 10px;
   }
-
 }

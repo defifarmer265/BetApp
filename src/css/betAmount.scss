@@ -1,121 +1,114 @@
 @import './utils/variables';
-.betAmount{
-    // background-color: #0f0;
-    // margin: 0 10px;
-    border-top: 1px solid #EAECEF;
-    &__details{
-        &-money, 
-        &-bonus,
-        &-winning{
-            display: flex;
-            align-items: center;
-            .info{
-                font-size: 15px;                
-            }
-            .content{
-                font-size: 15.5px;
-            }
-        }
-        &-money{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 10px 0;
-                .input{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    justify-content: flex-end;
-                    .invalid-feedback{
-                        font-size: 10px;
-                        color: #f00;
-                        margin-top: 3px;
-                    }
-                   input{
-                    &:focus{
-                        border: .15px solid $odd-color;
-                    }
-                    &::placeholder{
-                        font-size: 12px;
-                    }
-                
-                } 
-                }
-                   
-        }
-        &-bonus{
-            font-size: 15px;
-            h3{
-                margin-top: 0;
-                margin-bottom: 0;
-                display: inline;
-                margin-left: auto;
-                
-            }
-        }
-        &-winning{
-            font-size: 15px;
-            .money{
-                
-                margin-left: auto;
-                span{
-                    font-size: 11px;
-                }
-                h3{
-                    display: inline;
-                    
-                }
-            }
-        }
+.betAmount {
+  // background-color: #0f0;
+  // margin: 0 10px;
+  border-top: 1px solid #eaecef;
+  &__details {
+    &-money,
+    &-bonus,
+    &-winning {
+      display: flex;
+      align-items: center;
+      .info {
+        font-size: 15px;
+      }
+      .content {
+        font-size: 15.5px;
+      }
     }
-    &__actions{
-        margin-top: 10px;
-        &-suggest{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            width: 100%;
-            &-button{
-                font-size: 13px;
-                text-align: center;
-                border: .1em solid $odd-color;
-                padding: 11.5px!important;
-                border-radius: 4px;
-                line-height: 0;
-                cursor: pointer;
-                &:not(:last-child){
-                    margin-right: 6px;
-                }
-            }
-            
+    &-money {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+      .input {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        .invalid-feedback {
+          font-size: 10px;
+          color: #f00;
+          margin-top: 3px;
         }
-        &-buttons{
-            margin-top: 15px;
-            display: flex;
-            // justify-content: center;
-            .cancel{
-                margin-right: 15px;
-            }
-            .bet{
-                
-                margin-left: auto;
-                transition: .15s all;
-                border: none;
-                background-color: $button-hover;
-                color: #fff;
-                &:hover{
-                    background-color: $button-hover;
-                }
-                &.active{
-                    background-color: $odd-color;
-                    color: #fff;
-                }
-                &.inactive{
-                    background-color: $button-hover;
-                }
-            }
-            button{
-                width: 100px;
-            }
+        input {
+          &:focus {
+            border: 0.15px solid $odd-color;
+          }
+          &::placeholder {
+            font-size: 12px;
+          }
         }
+      }
     }
+    &-bonus {
+      font-size: 15px;
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        display: inline;
+        margin-left: auto;
+      }
+    }
+    &-winning {
+      font-size: 15px;
+      .money {
+        margin-left: auto;
+        span {
+          font-size: 11px;
+        }
+        h3 {
+          display: inline;
+        }
+      }
+    }
+  }
+  &__actions {
+    margin-top: 10px;
+    &-suggest {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: 100%;
+      &-button {
+        font-size: 13px;
+        text-align: center;
+        border: 0.1em solid $odd-color;
+        padding: 11.5px !important;
+        border-radius: 4px;
+        line-height: 0;
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-right: 6px;
+        }
+      }
+    }
+    &-buttons {
+      margin-top: 15px;
+      display: flex;
+      // justify-content: center;
+      .cancel {
+        margin-right: 15px;
+      }
+      .bet {
+        margin-left: auto;
+        transition: 0.15s all;
+        border: none;
+        background-color: $button-hover;
+        color: #fff;
+        &:hover {
+          background-color: $button-hover;
+        }
+        &.active {
+          background-color: $odd-color;
+          color: #fff;
+        }
+        &.inactive {
+          background-color: $button-hover;
+        }
+      }
+      button {
+        width: 100px;
+      }
+    }
+  }
 }

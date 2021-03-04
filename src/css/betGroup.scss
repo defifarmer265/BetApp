@@ -1,112 +1,107 @@
 @import './utils/mixins';
 @import './utils/variables';
-.betGroup{
-
-    table{
-        width: 100%;
-        font-size: 15px;
-        tr{
-            border: 1px solid #999;
-            position: relative;
-                border-bottom: 2px solid red;
-
-            
-        }
-        .match_date{
-            color: $font-color;
-            font-weight: 600;
-            font-size: 21px;
-        }
-        th{
-            
-            color: #b6b5b3;
-            font-weight: 100;
-            font-size: 13.5px;
-            &.hah{
-                border-bottom: 2px solid red;
-            }
-        }
-        td{
-            color: #000;
-            .match_detail{
-                @include respond-tablet-phone {
-                    display: none;
-                }
-            }
-            .teamShow{
-                display: none;
-                @include respond-tablet-phone {
-                    display: grid !important;
-                    grid-template-columns: max-content 1fr;
-                    align-items: center;
-                    margin-right: 20px;
-                    font-weight: 100;
-                }
-                @include respond-phone{
-                    font-size: 13px;
-                }
-                
-                &__teams{
-                    margin-left: 5px;
-                }
-                &__stats{
-                    // margin-right: 15px;
-                    font-weight: 400;
-                    svg{
-                        width: 20px;
-                        height: 20px;
-                        display: block;
-                        margin-bottom: 5px;
-                    }
-                }
-            }
-            button{
-                width: 100%;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                background-color: #e9f6de;
-                font-weight: 600 !important;
-                border-radius: 2.5px;
-                border: none;
-                &:hover{
-                    border: none;
-                    background-color: #cef2af;
-                }
-                span{
-                    font-weight: 800 !important;
-                }
-                &.matchSelected{
-                    background-color: $odd-color;
-                }
-            }
-        }
-        .teams{
-            @include respond-tablet-phone {
-                display: none;
-            }
-        }
-        .teamView{
-            font-weight: 100;
-            color: $font-color;
-            // font-size: 15px;
-            display: flex;
-            align-items: center;
-            &__teams{
-                
-            }
-            &__stats{
-                margin-left: auto;
-                margin-right: 17px;
-                svg{
-                    fill: $font-color;
-                    width: 18px;
-                    height: 18px;
-                }
-            }
-            @include respond-tablet-phone {
-                display: none;
-            }
-        }
+.betGroup {
+  table {
+    width: 100%;
+    font-size: 15px;
+    tr {
+      border: 1px solid #999;
+      position: relative;
+      border-bottom: 2px solid red;
     }
+    .match_date {
+      color: $font-color;
+      font-weight: 600;
+      font-size: 21px;
+    }
+    th {
+      color: #b6b5b3;
+      font-weight: 100;
+      font-size: 13.5px;
+      &.hah {
+        border-bottom: 2px solid red;
+      }
+    }
+    td {
+      color: #000;
+      .match_detail {
+        @include respond-tablet-phone {
+          display: none;
+        }
+      }
+      .teamShow {
+        display: none;
+        @include respond-tablet-phone {
+          display: grid !important;
+          grid-template-columns: max-content 1fr;
+          align-items: center;
+          margin-right: 20px;
+          font-weight: 100;
+        }
+        @include respond-phone {
+          font-size: 13px;
+        }
+
+        &__teams {
+          margin-left: 5px;
+        }
+        &__stats {
+          // margin-right: 15px;
+          font-weight: 400;
+          svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin-bottom: 5px;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        background-color: #e9f6de;
+        font-weight: 600 !important;
+        border-radius: 2.5px;
+        border: none;
+        &:hover {
+          border: none;
+          background-color: #cef2af;
+        }
+        span {
+          font-weight: 800 !important;
+        }
+        &.matchSelected {
+          background-color: $odd-color;
+        }
+      }
+    }
+    .teams {
+      @include respond-tablet-phone {
+        display: none;
+      }
+    }
+    .teamView {
+      font-weight: 100;
+      color: $font-color;
+      // font-size: 15px;
+      display: flex;
+      align-items: center;
+      &__teams {
+      }
+      &__stats {
+        margin-left: auto;
+        margin-right: 17px;
+        svg {
+          fill: $font-color;
+          width: 18px;
+          height: 18px;
+        }
+      }
+      @include respond-tablet-phone {
+        display: none;
+      }
+    }
+  }
 }

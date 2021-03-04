@@ -1,180 +1,179 @@
 @import './utils/variables';
 @import './utils/mixins';
 @import './utils/animations';
-.modal-bg{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $modal-bg;
-    z-index: 2222332 !important;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modal-bg {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $modal-bg;
+  z-index: 2222332 !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .modal__body{
-        flex: 1 0 auto;
-        background-color: #fff;
-        max-width: 790px;
-        // max-height: calc(100% - 40px);
-        margin: 0 auto;
-        // overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        animation: modalAnim .1s ease-out forwards;
-        svg{
-            fill: #b1b1b1;
-            margin: 10px 10px 0 auto;
+  .modal__body {
+    flex: 1 0 auto;
+    background-color: #fff;
+    max-width: 790px;
+    // max-height: calc(100% - 40px);
+    margin: 0 auto;
+    // overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalAnim 0.1s ease-out forwards;
+    svg {
+      fill: #b1b1b1;
+      margin: 10px 10px 0 auto;
+      cursor: pointer;
+    }
+    @include respond-before-phone {
+      margin: 10px;
+    }
+    @include respond-tablet {
+      margin: 10px;
+    }
+    &-top {
+      // display: flex;
+      // align-items: center;
+      // justify-content: space-between;
+      background-color: #fbfbfbd6;
+      height: 90px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      &-cancel {
+        width: fit-content;
+        height: 45px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        svg {
+          display: block;
+          // margin-left: auto;
+          // margin-top: 10px;
+          // margin-right: 10px;;
+          fill: #999;
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+        }
+      }
+      &-info {
+        height: 45px;
+        .content {
+          width: fit-content;
+          margin: 0 auto;
+          display: flex;
+          font-size: 27px;
+          & > * {
+            padding-bottom: 0;
             cursor: pointer;
+          }
+          & .active {
+            color: #0d9737;
+            border-bottom: 3px solid #0d9737;
+          }
+          .register {
+            margin-right: 15px;
+          }
         }
+      }
+      &.deposit {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: unset;
+        background-color: #fff;
+        .modal__text {
+          font-weight: 600;
+        }
+      }
+    }
+    &-bottom {
+      background: url('../icons/ball-bg.jpg');
+      display: flex;
+      // height: 300px;
+      padding: 40px 0 20px 0;
+      @include respond-before-phone {
+        padding: 40px 20px 20px 20px;
+      }
+      position: relative;
+
+      .ball {
+        width: 164px;
+        height: 157px;
+        z-index: 444;
+        top: 0;
+        left: -40px;
+        position: absolute;
+        background-size: cover;
+        background: url('../icons/football.png');
         @include respond-before-phone {
-            margin: 10px
+          display: none;
         }
-        @include respond-tablet {
-            margin: 10px
-        }
-        &-top{
-            // display: flex;
-            // align-items: center;
-            // justify-content: space-between;
-            background-color: #fbfbfbd6;
-            height: 90px;
-            display: grid;
-            place-items: center;
-            position: relative;
-            &-cancel{
-                width: fit-content;
-                height: 45px;
-                position: absolute;
-                top:10px;
-                right: 10px;
-                
-                svg{
-                    display: block;
-                    // margin-left: auto;
-                    // margin-top: 10px;
-                    // margin-right: 10px;;
-                    fill: #999;
-                    width: 25px;
-                    height: 25px;
-                    cursor: pointer;
-                }
-            }
-            &-info{
-                height: 45px;
-                .content{
-                    width: fit-content;
-                    margin: 0 auto;
-                    display: flex;
-                    font-size: 27px;
-                    & > *{
-                        padding-bottom: 0;
-                        cursor: pointer;
-                    }
-                    & .active{
-                        color: #0D9737;;
-                        border-bottom: 3px solid #0D9737;;
-                    }
-                    .register{
-                        margin-right: 15px;
-                    }
-                }
-            }
-            &.deposit{
-                display: flex;
-                align-items: flex-end;
-                justify-content: space-between;
-                height: unset;
-                background-color: #fff;
-                .modal__text{
-                    font-weight: 600;
-                }
-            }
-        }
-        &-bottom{
-            background: url('../icons/ball-bg.jpg');
-            display: flex;
-            // height: 300px;
-            padding: 40px 0 20px 0;
-            @include respond-before-phone {
-                padding: 40px 20px 20px 20px;
-            }
-            position: relative;
-            
-            .ball{
-                width: 164px;
-                height: 157px;
-                z-index: 444;
-                top: 0;
-                left: -40px;
-                position: absolute;
-                background-size: cover;
-                background: url('../icons/football.png');
-                @include respond-before-phone {
-                    display: none;
-                }
-            }
-        }
-        &-main{
-            // background-color: #00f;
-            flex: 1 0 auto;
-            max-width: 350px;
-            // width: 300px;
-            // 
-            margin: auto;            
-            background-size: cover;
-            input{
-                max-width: 350px;
-                width: 100%;
-                height: 55px;
-                border: 1px solid #B4B4B4;  
-                &:focus{
-                    border: .15px solid $odd-color;
-                }              
-            }
-            .first-input{
-                // border-top: none ;
-            }
-        }
+      }
     }
+    &-main {
+      // background-color: #00f;
+      flex: 1 0 auto;
+      max-width: 350px;
+      // width: 300px;
+      //
+      margin: auto;
+      background-size: cover;
+      input {
+        max-width: 350px;
+        width: 100%;
+        height: 55px;
+        border: 1px solid #b4b4b4;
+        &:focus {
+          border: 0.15px solid $odd-color;
+        }
+      }
+      .first-input {
+        // border-top: none ;
+      }
+    }
+  }
 }
 
-.action{
-    background-color: #b1b1b1;
-    margin: 25px auto 15px;
+.action {
+  background-color: #b1b1b1;
+  margin: 25px auto 15px;
+  color: #fff;
+
+  &.active {
+    background-color: $odd-color;
     color: #fff;
-
-    &.active{
-        background-color: $odd-color;
-        color: #fff;
-    }
+  }
 }
-.login__option{
-    display: flex;
-    align-items: center;
-    .facebook-login{
+.login__option {
+  display: flex;
+  align-items: center;
+  .facebook-login {
     width: 25px;
     height: 25px;
     margin-right: 5px;
     background-color: #3656a3;
     display: grid;
     place-items: center;
-    svg{
-        width: 18px;
-        height: 18px;
-        fill: #fff;
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: #fff;
     }
-}
+  }
 
-&-detail{
+  &-detail {
     display: inline-block;
-    color: #3656A3;
+    color: #3656a3;
     letter-spacing: 1.2px;
     margin: 0;
     font-size: 15px;
-}
-    
+  }
 }

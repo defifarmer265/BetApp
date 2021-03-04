@@ -1,109 +1,107 @@
 @import './utils/variables';
 @import './utils/mixins';
 @import './utils/animations';
-.mobilebets{
-    width: 100%;
-    height: 50px;
+.mobilebets {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  // top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-color: $modal-bg;
+  display: none;
+  // z-index: 9999999999999 !important;
+  // height: 100vh;
+  @include respond-before-phone {
+    display: block;
+  }
+  &__content {
     position: fixed;
-    // top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    background-color: $modal-bg;
+    width: 100%;
+    height: 100vh;
+    z-index: 299;
+    // height: 90vh;
+    // display: flex;
+    // flex-direction: column;
+  }
+  &__top {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    overflow-y: auto;
+    background-color: #353a45;
+    max-height: calc(100vh - 230px);
+    margin-top: calc(100vh - (calc(100vh - 230px)) - 50px);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-    background-color: $modal-bg;
-    display: none;
-    // z-index: 9999999999999 !important;
-    // height: 100vh;
-    @include respond-before-phone {
-        display: block;
+    justify-content: space-between;
+    .bets {
+      overflow-y: auto;
     }
-    &__content{
-        position: fixed;
-        top: 0;
-        background-color:$modal-bg;
-        width: 100%;
-        height: 100vh;
-        z-index: 299;
-        // height: 90vh;
-        // display: flex;
-        // flex-direction: column;
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+      text-align: center;
+      display: block;
+      margin: 10px auto;
+      cursor: pointer;
     }
-    &__top{
-        position: absolute;
-        bottom: 50px;
-        width: 100%;
-        overflow-y: auto;
-        background-color: #353a45;
-        max-height: calc(100vh - 230px);
-        margin-top: calc(100vh - (calc(100vh - 230px)) - 50px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .bets{
-            overflow-y: auto;
-        }
-        svg{
-            width: 30px;
-            height: 30px;
-            fill: #fff;
-            text-align: center;
-            display: block;
-            margin: 10px auto;
-            cursor: pointer;
-        }
-        // &-svg{
-        //     width: ;
-        // }
+    // &-svg{
+    //     width: ;
+    // }
+  }
+  &__bottom {
+    height: 50px;
+    display: flex;
+    width: 100%;
+    z-index: 333;
+    // margin-top: auto;
+    // flex-grow: 1;
+    .betlist,
+    .bet-cashout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 400;
+      font-size: 17px;
+      text-align: center;
+      .circle {
+        color: #fff;
+        margin-left: 7px;
+      }
     }
-    &__bottom{
-        height: 50px;
-        display: flex;
-        width: 100%;
-        z-index: 333;
-        // margin-top: auto;
-        // flex-grow: 1;
-        .betlist,
-        .bet-cashout{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 400;
-            font-size: 17px;
-            text-align: center;            
-            .circle{
-                color: #fff;
-                margin-left: 7px;
-            }
-        }
 
-        button{
-            flex-grow: 1;
-        }
-        .betlist{
-            background-color: #009d00;
-        }
-        .bet-cashout{
-            background-color: #323232;
-        }
+    button {
+      flex-grow: 1;
     }
+    .betlist {
+      background-color: #009d00;
+    }
+    .bet-cashout {
+      background-color: #323232;
+    }
+  }
 }
 
 .slide-up-enter,
-.slide-up-exit-active{
-    // can be used for initialization, ie. the initial state of the element, before it is visible
-    transition: all .3s cubic-bezier(.36,-0.01,.13,.97);
-    transform: translateY(290px) !important;
-    opacity: 0 !important;
-  }
-  .slide-up-enter-active{
-      opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: all .3s cubic-bezier(.36,-0.01,.13,.97) !important;
-    
-  }
-  .slide-up-exit{
-    
-  }
+.slide-up-exit-active {
+  // can be used for initialization, ie. the initial state of the element, before it is visible
+  transition: all 0.3s cubic-bezier(0.36, -0.01, 0.13, 0.97);
+  transform: translateY(290px) !important;
+  opacity: 0 !important;
+}
+.slide-up-enter-active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.3s cubic-bezier(0.36, -0.01, 0.13, 0.97) !important;
+}
+.slide-up-exit {
+}

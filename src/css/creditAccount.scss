@@ -1,32 +1,31 @@
 @import './utils/variables';
-.creditAccount{
+.creditAccount {
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
 
-    &__input{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 10px;
-
-        label{
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        input{
-            width: 70% !important;
-            &:focus{
-                border-color: $odd-color;
-            }
-        }
+    label {
+      font-size: 14px;
+      margin-bottom: 5px;
     }
-    .form-label{
-        width: fit-content;
+    input {
+      width: 70% !important;
+      &:focus {
+        border-color: $odd-color;
+      }
     }
-    .pay{
-        background-color: $button-hover;
-        color: #fff;
-        &.active{
-            background-color: $odd-color;
-            color: #fff;
-        }
+  }
+  .form-label {
+    width: fit-content;
+  }
+  .pay {
+    background-color: $button-hover;
+    color: #fff;
+    &.active {
+      background-color: $odd-color;
+      color: #fff;
     }
+  }
 }

@@ -1,154 +1,144 @@
 @import './utils/variables';
 @import './utils/mixins';
-.betinfo{
-    min-height: 182px;
-    background-color: #fff;
-    border: 5px solid #353a45;
-    @include respond-before-phone {
-        border-bottom: none;
+.betinfo {
+  min-height: 182px;
+  background-color: #fff;
+  border: 5px solid #353a45;
+  @include respond-before-phone {
+    border-bottom: none;
+  }
+  // background-color: #fff;
+
+  &__body {
+    margin: 0 10px 20px 10px;
+  }
+  &__option {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    text-align: center;
+    color: #fff;
+    background-color: #353a45;
+    padding-top: 15px;
+    padding-bottom: 8px;
+
+    &-betslip,
+    &-cashout {
+      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      padding-bottom: 5px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 3px solid $odd-color;
+      }
     }
-    // background-color: #fff;
-
-    &__body{
-        margin: 0 10px 20px 10px;
+    &-betslip {
     }
-        &__option{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-items: center;
-            text-align: center;
-            color: #fff;
-            background-color: #353a45;
-            padding-top: 15px;
-            padding-bottom: 8px;
-    
-            &-betslip,
-            &-cashout{
-                width: 80%;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                place-items: center;
-                padding-bottom: 5px;
-                cursor: pointer;
-                &.active{
-                    border-bottom: 3px solid $odd-color;
-                }
-                
-            }
-            &-betslip{
-    
-            }
-            &-cashout{
-    
-            }
-        }
-        &__body{
-            
-            border-top: none;
-        }
-        &__remove{
-            width: 100%;
-            margin: 10px 0;
-            span{
-                cursor: pointer;
-                font-size: 12px;
-                display: block;
-                width: 70px;
-                box-sizing: border-box;
-                margin-left: auto;
-                border: 1px solid #EAECEF;
-                border-radius: 2px;
-                padding: 2px 4px;
-                color: #3656A3;
-                // height: 24px;
-            }
-        }
-    & .betInfo{
-        display: flex;
-        // align-items: stretch;
-        justify-content: flex-start;
-        max-height: 100px;
-        
-        
-        // margin-bottom: 7px;
-        
-
-        &__selected{
-            padding: 7px 0 0;
-            &-box{
-                // width: 14px;
-                // height: 14px;
-                // border: 1px solid #d8d8d8;
-                input{
-
-                    &:checked{
-                        background-color: $odd-color;
-                    }
-                }
-            }
-        }
-
-        &__main{
-            // height: 100px !important;
-            margin-left: 10px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-top: 1px solid #EAECEF;
-            padding: 7px 0 0;
-            font-size: 13px;
-            &-top{
-                
-                font-size: 13px;
-                &-content{
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: flex-start;
-
-                    svg{
-                    width: 15px;
-                    height: 15px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                    fill: $font-color;
-                    }
-                    .market{
-                        margin: 0;
-                        font-weight: 600;
-                    }
-                }
-                // & > *{
-                //     display: block;
-                //     margin-right: auto !important;
-                // }
-                // height: 30px !important;
-                
-            }
-
-            &-bottom{
-                font-weight: 600;
-                letter-spacing: 2px;
-            }
-        }
-
-        &__action{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-top: 1px solid #EAECEF;
-            padding: 7px 0 0;
-            &-cancel{
-                cursor: pointer;
-                svg{
-                    fill: #353A45;
-                }
-            }
-            &-odd{
-                font-weight: 600;
-            }
-        }
+    &-cashout {
     }
-    
+  }
+  &__body {
+    border-top: none;
+  }
+  &__remove {
+    width: 100%;
+    margin: 10px 0;
+    span {
+      cursor: pointer;
+      font-size: 12px;
+      display: block;
+      width: 70px;
+      box-sizing: border-box;
+      margin-left: auto;
+      border: 1px solid #eaecef;
+      border-radius: 2px;
+      padding: 2px 4px;
+      color: #3656a3;
+      // height: 24px;
+    }
+  }
+  & .betInfo {
+    display: flex;
+    // align-items: stretch;
+    justify-content: flex-start;
+    max-height: 100px;
+
+    // margin-bottom: 7px;
+
+    &__selected {
+      padding: 7px 0 0;
+      &-box {
+        // width: 14px;
+        // height: 14px;
+        // border: 1px solid #d8d8d8;
+        input {
+          &:checked {
+            background-color: $odd-color;
+          }
+        }
+      }
+    }
+
+    &__main {
+      // height: 100px !important;
+      margin-left: 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 1px solid #eaecef;
+      padding: 7px 0 0;
+      font-size: 13px;
+      &-top {
+        font-size: 13px;
+        &-content {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+
+          svg {
+            width: 15px;
+            height: 15px;
+            margin-right: 4px;
+            margin-top: 0;
+            fill: $font-color;
+          }
+          .market {
+            margin: 0;
+            font-weight: 600;
+          }
+        }
+        // & > *{
+        //     display: block;
+        //     margin-right: auto !important;
+        // }
+        // height: 30px !important;
+      }
+
+      &-bottom {
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+    }
+
+    &__action {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid #eaecef;
+      padding: 7px 0 0;
+      &-cancel {
+        cursor: pointer;
+        svg {
+          fill: #353a45;
+        }
+      }
+      &-odd {
+        font-weight: 600;
+      }
+    }
+  }
 }
